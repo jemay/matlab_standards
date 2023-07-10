@@ -30,14 +30,7 @@
           target: 'h1, h2, h3, h4, h5, h6'
       },
      
-      plugins: [
-        function(hook) {
-          var footer = [ '<hr/>', '<footer>', '<span><img src="assets/SLAC_primary_red_small.png" height="30vh" style="margin-top: 10px"/></span>', '<span class="partner"><img src="assets/Stanford_DOE_black.png" height="50vh"/></span></span>', '</footer>' ].join('');
-          hook.afterEach(function(html) {
-          return html + footer;
-          });
-        }
-      ]
+      plugins: []
     }
   </script>
   <script src="assets/docsify.min.js"></script>
