@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Scientific Data Facility</title>
-  <link rel="icon" type="image/png" href="assets/SDF32.png"/>
+  <title>MATLAB Programming Standards</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
@@ -17,27 +16,30 @@
   <script src="assets/docsify-edit-on-github.min.js"></script>
   <script>
     window.$docsify = {
-      name: 'SDF',
+      name: 'MATLAB Standards',
       loadSidebar: true,
       coverpage: false,
       auto2top: true,
       //maxLevel: 2,
       subMaxLevel: 2,
-      repo: "slaclab/sdf-docs",
+      repo: "jrudolph/matlab_standards",
       logo: "assets/SLAC_short_white.png",
       //formatUpdated: '{DD}/{MM}/{YYYY} @ {HH}:{mm}',
       toc: {
         tocMaxLevel: 5,
           target: 'h1, h2, h3, h4, h5, h6'
       },
+     
       plugins: [
-        EditOnGithubPlugin.create( "https://github.com/slaclab/sdf-docs/blob/s3df/", null, function(file){ return "Edit page"}),
+        <!---
+        EditOnGithubPlugin.create( "https://github.com/jrudolph/sdf-docs/blob/s3df/", null, function(file){ return "Edit page"}),
         function(hook) {
           var header = [ '<header>', '<span><img src="assets/slac_s3df_acronym_long_screen_small.png" height="50vh" /></span>', '</header>' ].join('');
           hook.afterEach(function(html) {
           return header + html;
           });
         },
+      ---!>
         function(hook) {
           var footer = [ '<hr/>', '<footer>', '<span><img src="assets/SLAC_primary_red_small.png" height="30vh" style="margin-top: 10px"/></span>', '<span class="partner"><img src="assets/Stanford_DOE_black.png" height="50vh"/></span></span>', '</footer>' ].join('');
           hook.afterEach(function(html) {
