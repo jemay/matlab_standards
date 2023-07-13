@@ -1,79 +1,10 @@
-<html lang="en">
-<head>
-<title>MATLAB Programming Standards</title>
-<link rel="stylesheet" type="text/css" href="https://www.slac.stanford.edu/grp/ad/css/base_cardinal.css">
-<link rel="stylesheet" type="text/css" href="https://www.slac.stanford.edu/grp/ad/css/addocs.css">
-<style>
-img {
-border: 1px;
-display: block;
-margin: auto;
-vertical-align:middle;
-max-height:100%;
-}
-</style>
-</head>
-<body>
 
-<!--
-Modifying this file:
-  matlab_standards.html is generated from matlab_standards.md (markdown). It is best updated using a markdown
-  editor, although any editor can be used.  The HTML file needs to be "published"
-  by having a markdown program read this file and generate HTML. On MacOS, one can
-  use "macDown", an open-source application, or one can use the python module
-  named "markdown" installed in your python environment.
-  The markdown module can be intalled through pip (or pip3) for
-  python3. pip3 is shipped in mac os at the time of writing.
-  You'll also need git. git is also shipped with Mac OS at the time of writing.
-
-  bsd.md and bsd.html are in the matlab.git repo in
-  /afs/slac/g/cd/swe/git/repos/sites/www.slac.stanford.edu/grp/ad/docs/model/matlab.git
-
-Follow these steps to edit:
-
-git clone yourusername@rhel6-64.slac.stanford.edu:/afs/slac/g/cd/swe/git/repos/sites/www.slac.stanford.edu/grp/ad/docs/model/matlab.git
-
-  Edit matlab_standards.md
-  Convert matlab_standards.md to matlab_standards.html. On MacOS using macDown, select File>Export>HTML..., or
-  using python:
-           python -m markdown -x markdown.extensions.toc -x markdown.extensions.tables matlab_standards.md > matlab_standards.html
-  git commit -m "comment" matlab_standards.{md,html}
-  git push
-  Verify it worked by visiting https://www.slac.stanford.edu/grp/ad/docs/matlab/documents/matlab_standards.html
-Authors: Jake Rudolph and Many, May 10, 2023
--->
-
-<!-- The Masthead -->
-<div id="masthead">
-    <a href="https://www.slac.stanford.edu/">
-      <img style="position: absolute; left: 20px; top: 40px" src="https://www.slac.stanford.edu/grp/ad/model/images/SLAC-lab-hires.png"
-        alt="SLAC National Accelerator Laboratory" width="283"/>
-    </a>
-</div>
-<br /><br /><br />
-<hr />
-<br />
-<p style="font: 170% sans-serif; color: #660003; text-align: center">
-MATLAB Programming Standards
-</p>
-<p style="text-align:center">
-Many, SLAC, May 2023 <br />
-</p>
-<!-- End Masthead -->
 
 **STATUS:** This document is in development as of May 16th, 2023
 
 **Scope:** This document details source code requirements and programming idioms required for all MATLAB code of the Accelerator Directorate, SLAC National Accelerator Laboratory. It additionally gives some recommended practices and examples.
 
 **Purpose:** insert a fancy sentence about readability and such
-
-<p style="font-size:larger">
-TABLE OF CONTENTS
-</p>
-
-[toc]
-
-<hr />
 
 
 # NAMING CONVENTIONS
@@ -320,8 +251,3 @@ DON'T:
 **Description:** Use the suffix Test only for unit test filenames.
 
 **Rationale:** This increases the readability of the code as it is clear from the name of the file that it is a unit test file.
-
-<hr /><!-- hhmts start -->Last modified: Mon Sep 26 10:47:21 PDT 2022 <!-- hhmts end -->
-
-</body>
-</html>
