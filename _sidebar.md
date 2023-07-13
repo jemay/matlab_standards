@@ -1,6 +1,2 @@
-* [Welcome](/)
-* [Naming Conventions](naming_conventions.md)
-* [Layout](layout.md)
-* [Statements and Expressions](statements_and_expressions.md)
-* [Higher Level Rules](higher_level_rules.md)
-* [Other](other.md)
+* [Standards](matlab_standards.md)
+
