@@ -9,17 +9,15 @@
 
 This section describes recommendations for naming conventions.
 
-## MANDATORY
+## Name Shadowing
 
-### Name Shadowing
-
-**Description:** Functions and variables shall not shadow Mathworks-shipped functionality or other code. This includes MATLAB files (.m, .p, .mlapp, .mlx), mex-files (.mexw32 etc.) and Simulink files (.mdl, .slx).
+**Description:** Functions and variables **MUST NOT** shadow Mathworks-shipped functionality or other code. This includes MATLAB files (.m, .p, .mlapp, .mlx), mex-files (.mexw32 etc.) and Simulink files (.mdl, .slx).
 
 **Rationale:** Shadowing code can result in unexpected behaviour, because it is unclear and not properly defined for example what function is called when multiple ones share the same name.
 
-### Units
+## Units
 
-**Description:** Variable names must be documented, either in the variable name, or as end-of-line comments in square brackets. Prefer end-of-line comments if addition to the variable name will make it excessively long.
+**Description:** Variable names **MUST** be documented, either in the variable name, or as end-of-line comments in square brackets. Prefer end-of-line comments if addition to the variable name will make it excessively long.
 
 **Rationale:** Maintain readability by using concise variable names.
 
@@ -36,11 +34,9 @@ DON'T:
 	
 	
 
-## STRONGLY RECOMMEND
+## Negated Boolean Names
 
-### Negated Boolean Names
-
-**Description:** Avoid variable names including the word not.
+**Description:** Variable names **SHOULD NOT** include the word not.
 
 **Rationale:** Readability decreases when variables have negated boolean names, especially in combination with the ~ operator.
 
@@ -56,10 +52,9 @@ DON'T:
 		error('My error message.') 
 	end 
 	
-### Descriptive Names
+## Descriptive Names
 
-**Description:** Use precise and descriptive names for functions, classes,
-packages and variables.
+**Description:** Names for functions, classes, packages and variables **MUST** be precise and descriptive.
 
 **Rationale:** This increases the readability of the code.
 
@@ -72,9 +67,10 @@ DON'T:
 	function temperatureK = convertCelsiusToKelvin(temperatureC) 
 	
 	
-### The 'n' Prefix
+## The 'n' Prefix
 
-**Description:** The prefix n should be used for variables that represent a number of things. Do not use the prefix for other purposes and do not use other prefixes for representing the number of things.
+**Description:** The prefix n **SHOULD** be used for variables that represent a number of things. The prefix **SHOULD NOT** be used for other purposes, and other prefixes for representing the number of things **SHOULD NOT**.
+
 **Rationale:** Variables starting with this prefix can easily be identified.
 
 DO:
@@ -89,11 +85,9 @@ DON'T:
 	nrCars 
 	lineCount
 
-## BEST PRACTICES
+## Name Length
 
-### Name Length
-
-**Description:** Variable names shall be at most 32 characters long. Function names shall be at least 3 and at most 32 characters long.
+**Description:** Variable names should be at most 32 characters long. Function names should be at least 3 and at most 32 characters long.
 
 **Rationale:** Names shall be descriptive, so should not be too short. However, variable names can sometimes be single characters (x, y) and still be descriptive. Names that are too long can reduce readability because they introduce long lines of code.
 
@@ -106,9 +100,9 @@ DON'T
 
     maximumValueOfTheEntireSetOfDataPoints = max(data);
 
-### Loop Iterator Naming
+## Loop Iterator Naming
 
-**Description:** Iterator variable names shall be at least 3 characters long. In nested for-loops, the starting letters of the iterator names shall be subsequent letters in the alphabet.
+**Description:** Iterator variable names **SHOULD** be at least 3 characters long. In nested for-loops, the starting letters of the iterator names **SHOULD** be subsequent letters in the alphabet.
 
 **Rationale:** Iterator variables of for-loops are easily distinguishable from other variables by using these prefixes.
 
@@ -128,9 +122,10 @@ DON'T:
     	end 
 	end   
 
-### Parent / Child Name Redundancy
+## Parent / Child Name Redundancy
 
-**Description:** Names of fields and properties shall not contain their parent struct or object's name.
+**Description:** Names of fields and properties **SHOULD NOT** contain their parent struct or object's name.
+
 **Rationale:** When referenced, the fields and properties can have the same phrase multiple times in a row, which is unnecessary.
 
 DO:
@@ -144,9 +139,9 @@ DON'T:
 	chair.weightOfChair
 	
 
-### Names to Avoid
+## Names to Avoid
 
-**Description:** Names of classes, functions, variables, properties and struct fields should not start with temp, my and they should not have names such as myClass, testFunction, etc.
+**Description:** Names of classes, functions, variables, properties and struct fields **SHOULD NOT** start with temp, my and they **SHOULD NOT** have names such as myClass, testFunction, etc.
 
 **Rationale:** Names like these do not properly indicate what the class, function or variable is for.
 
@@ -168,9 +163,9 @@ In particular:
 	tmp 
 	test 
 	
-### Function Names Document Their Use
+## Function Names Document Their Use
 
-**Description:** The names of functions should document their use.
+**Description:** The names of functions **MUST** document their use.
 
 **Rationale:** By choosing a clear and descriptive name, the code becomes more readable.
 
@@ -185,19 +180,21 @@ DON'T:
 
 	modelFunction 
 
-### Function Name Construction
+## Function Name Construction
 
-**Description:** All function names shall consist of a verb and a noun. When appropriate also include a grouping (model\_, control\_, util\_, gui\_, etc.)
+**Description:** Function names **SHOULD** consist of a verb (action) followed by a noun (direct object). For class methods, the direct object may be omitted if it is redundant. 
 
 **Rationale:** This way it is more likely to be clear what the function does and if there is no suitable name following this guideline, (for example because the function does more than one thing) the function may have to be refactored.
 
 DO:
 
-	model_rMatGet 
-	control_bpmGet 
-	util_gaussFit 
-	gui_sliderControl  
-	do_thing 
+	getPosition
+	findOutlier
+	multiplyNumbers
+	updateModel
+	getTwiss
+	standardizeMagnet
+	checkConvergence
 
 DON'T:
 
@@ -207,21 +204,21 @@ DON'T:
 	sliderstuff 
 
 
-### Casing
+## Casing
 
 TBD
 
 
-### The 'is' Prefix
+## The 'is' Prefix
 
-**Description:** The is prefix shall be used for functions returning logical values or properties and variables holding logical values.
+**Description:** The is prefix **SHOULD** be used for functions returning logical values or properties and variables holding logical values.
 
 **Rationale:** This increases the readability of the code as it is clear from the name.
 
 
-### Abbreviations
+## Abbreviations
 
-**Description:** Variable names shall not contain abbreviations; except for idiomatic abbreviations commonly used at SLAC. (Found in SLAC Speak)
+**Description:** Variable names **SHOULD NOT** contain abbreviations; except for idiomatic abbreviations commonly used at SLAC. (Found in SLAC Speak)
 
 **Rationale:** Maintain readability by not abbreviating words in your variable names. Common acronyms are allowed.
 
@@ -244,8 +241,8 @@ DON'T:
 	bpmC
 	
 	
-### The 'Test' Suffix
+## The 'Test' Suffix
 
-**Description:** Use the suffix Test only for unit test filenames.
+**Description:** The suffix "Test" **SHOULD** only be used for unit test filenames.
 
 **Rationale:** This increases the readability of the code as it is clear from the name of the file that it is a unit test file.
