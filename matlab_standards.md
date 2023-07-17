@@ -502,71 +502,397 @@ DON'T:
 
 # Statements and Expressions
 
-##
+## Constant Definitions
+
+**Description:** Constant definitions **SHOULD** be placed at the top of the function, after defining global/persistent variables. For classes, constant definitions **SHOULD** exist in a separate file.
+
+**Rationale:** Consistent constant definition allows for easy identification.
+
+DO:
+	function testConstants(x) 
+		MAX_Z = 100; 
+		 
+		y = 3 * x; 
+		z = min(y, MAX_Z); 
+	end 
+ 
+DON'T:
+	function testConstants(x) 
+		y = 3 * x; 
+		MAX_Z = 100; 
+		z = min(y, MAX_Z); 
+	end
+
+## Magic Numbers
+
+**Description:** Magic numbers **SHOULD NOT** be used in expressions. Define them as variables constants before using them. 
+
+**Rationale:** This encourages reuse and documentation of numerical constants and improves overall readability.
+
+DO:
+	DECK_SIZE   = 52; 
+	N_VALUES    = 13; 
+	 
+	for iPick = 1 : DECK_SIZE 
+	    disp(randi(N_VALUES)); 
+	end 
+
+DON'T:
+	for iPick = 1 : 52 
+	    disp(randi(13)); 
+	end 
+ 
+## Function Calls Without Inputs
+
+**Description:** Empty parentheses **SHOULD** be used for function calls without input arguments. 
+
+**Rationale:** This helps to emphasize the fact that they are function calls and not variables or properties. 
+
+DO:
+	x = rand() * 2; 
+
+DON'T:
+	x = rand * 2;
+
+## One Statement Per Line
+
+**Description:** Each line **SHOULD** have at most one statement
+
+**Rationale:** Maintain readability of your code by having each line of code do exactly one thing. 
+
+**Exception:** One may declare a maximum of three variables on a single line if they are all of the same type or unit. One may place an if, for or while statement on one line if there is exactly one statement inside of the loop. 
+
+DO:
+	for iNode = 1 : 3 
+	    x = x + iNode; 
+	    disp(x); 
+	end 
+	 
+	a = 1;  % Unitless 
+	b = 2;  % Unitless 
+	c = 3; % Unitless 
+	disp(a + b + c); 
+	 
+	time_limit = 2; % [minutes] 
+	time_start = 4; % [seconds] 
+	time_stop = 9; % [seconds] 
+	time_elapsed = time_stop - time_start; 
+
+DON'T:
+	for iNode = 1 : 3, x = x + iNode; disp(x); end 
+	 
+	a = 1;  % Unitless 
+	b = 2;  % Unitless 
+	c = 3; % Unitless 
+	disp(a + b + c); 
+	 
+	time_limit = 2; % [minutes] 
+	time_start = 4; % [seconds] 
+	time_stop = 9; % [seconds] 
+	time_elapsed = time_stop - time_start; 
+
+EXCEPTIONS:
+	% Variable declarations:
+	persistent x, y; 
+	 
+	[a, b, c] = deal(1, 2, 3); 
+	disp(a + b + c); 
+	 
+	time_limit = 2; % [minutes] 
+	[time_start, time_stop] = deal(4, 9); % [seconds] 
+	time_elapsed = time_stop - time_start; 
+	 
+	% One line loop: 
+	for iNode = 1 : 3, x = x + iNode; end  % 1 statement inside loop is allowed 
+ 
+## If/Else
+
+**Description:** Every if **SHOULD** have an else section, even if it does not contain executable code. 
+
+**Rationale:** By including an else section, no execution paths are overlooked. Additionally, code coverage can be accurately reported because without else, it is unclear whether the if-condition is ever false. 
+
+DO:
+	if x > 0 
+	    saveData() 
+	else 
+	    % x does not indicate we want to save the dataset. 
+	end 
+
+DON'T:
+	if x > 0 
+	    saveData() 
+	end
+
+## Switch Otherwise
+
+**Description:** Every switch **SHOULD** have an otherwise section, even if it does not contain executable code. 
+
+**Rationale:** By including an otherwise section, no execution paths are overlooked. Additionally, code coverage can be accurately reported because without otherwise, it is unclear whether it happens that none of the cases occur. 
+
+DO:
+	switch reply 
+	    case "Yes" 
+	        saveData() 
+	    case "No" 
+	        clearData() 
+	    otherwise 
+	        % Should not get here. 
+	        error("Unknown reply " + reply) 
+	end 
+
+DON'T:
+	switch reply 
+	    case "Yes" 
+	        saveData() 
+	    case "No" 
+	        clearData() 
+	end
+
+## Mixed Types in Expressions
+
+**Description:** Multiple operand types **SHOULD NOT** be used in a single operator. For example, do not mix logical and numerical operatonds with a multiplication operator. 
+
+**Rationale:** Mixing operand types per operator can cause unexpected results and may lead to errors in case of true incompatibilities. 
+
+DO:
+	d = (a * b > 0) && c; 
+ 
+DON'T:
+	d = a * b && c;
+
+## Parentheses in Logical Expressions
+
+**Description:** Parentheses **SHOULD** be used to clarify the precedence of operands in expressions with multiple logical operators. No parentheses are required when only one type of logical operator is used. For example: d = a && b && c;. 
+
+**Rationale:** By clarifying the precedence of the operands in such expressions, readability is improved and unexpected behaviour is prevented. 
+
+DO:
+	d = a && b || c;
+ 
+DON'T:
+	d = (a && b) || c; 
+
+## Parentheses in Mathematical Expressions
+
+**Description:** Parentheses **SHOULD** be used to clarify the precedence of operands in expressions with multiple mathematical operators. No parentheses are required when only one type of mathematical operator is used. For example: d = a * b * c;. 
+
+**Rationale:** By clarifying the precedence of the operands in such expressions, readability is improved and unexpected behaviour is prevented. 
+
+DO:
+	d = (a * b) + c; 
+	h = (f / 2) * g; 
+ 
+DON'T:
+	d = a * b + c; 
+	h = f / 2 * g;
+
+## Assert Inputs
 
 **Description:**
 
 **Rationale:**
 
-##
+## Global Variables
+
+**Description:** The global keyword **SHOULD NOT** not be used. 
+
+**Rationale:** The value of global variables can change from anywhere, which can make things unnecessarily complicated.
+
+## Constant Conditional Statements
+
+**Description:** Cconditions that are always true or always false, such as if true or elseif 0, **SHOULD NOT** be used. MATLAB's Code Analyzer warns about some of these cases. 
+
+**Rationale:** These constructs may cause unreachable code or unintended behaviour. 
+
+DO:
+	disp(x)
+DON'T:
+	if x > 0 || true 
+	    disp(x) 
+	end    
+
+## Group Struct Field Definitions
+
+**Description:** All fields of a struct **SHOULD** be defined in a single, contiguous block of code. No fields should be added to a struct after using it. 
+
+**Rationale:** Lines of code or functions using the struct might assume that all fields are already there, resulting in an error if the field is not there. 
+
+DO:
+	s = struct("f", 2, "g", 3, "h", 'new field'); 
+	 
+	computeCost(s); 
+ 
+DON'T:
+	s = struct("f", 2, "g", 3); 
+	 
+	computeCost(s); 
+	s.h = 'new field'; 
+ 
+## Eval Functions
+
+**Description:** The built-in eval function **SHOULD NOT** be used. Use of feval, evalin and evalc **SHOULD** be minimized.
+
+**Rationale:** These functions can have harmful results and statements using them are usually difficult to read and maintain. 
+Additionally, it may be overlooked when variables are defined or altered by calls to these functions.
+
+## Keywords Break, Continue, and Return
+
+**Description:** Use the keywords break, continue and return **SHOULD** be avoided. 
+
+**Rationale:** Using break, continue or return decreases readability because the end of the function is not always reached. By avoiding these keywords, the flow of the code remains clear. However, these keywords can be useful to reduce complexity and improve performance. 
+
+DO:
+	if isempty(x) 
+	    % No further actions. 
+	else 
+	    <rest of the code> 
+	end  
+
+DON'T:
+	if isempty(x) 
+	    return 
+	end 
+	 
+	<rest of the code>
+
+## Shell Escape
+
+**Description:** The shell escape function **SHOULD NOT** be used. If necessary, use the system function instead. 
+
+**Rationale:** When using the !program_to_execute syntax to execute external programs, no dynamic input or program names can be used. 
+
+DO:
+	system('mycommand') 
+ 
+DON'T:
+	!mycommand 
+
+## Dependencies Known
 
 **Description:**
 
 **Rationale:**
 
-##
+## Try/For Exception Handling
 
-**Description:**
+**Description:** The try construct **SHOULD** only be used for exception handling. An exception object must be assigned or created and an error function must be called in the catch. Do not use try/catch to suppress errors or to express simple conditions. There are other, more suitable options for that. 
 
-**Rationale:**
+**Rationale:** Using try for simple error suppression can result in poor performance and unexpected behaviour. When a different error occurs than the one expected, it can go undetected because of the try/catch. 
 
-##
+DO:
+	if isfield(container, 'nElements') 
+	    nElems = container.nElements; 
+	else 
+	    nElems = 0; 
+	end 
+ 
+DON'T:
+	try 
+	    nElems = container.nElements; 
+	catch 
+	    nElems = 0; 
+	end
 
-**Description:**
+## Floaitng-Point Comparisons
 
-**Rationale:**
+**Description:** Floating-point values **SHOULD NOT** be compared using == or ~=. Use a tolerance instead. 
 
-##
+**Rationale:** Rounding errors due to algorithm design or machine precision can cause unexpected inequalities. 
 
-**Description:**
+DO:
+	out = abs(myFcn(in) - sqrt(3)) < 1e-12; 
+DON'T:
+	out = myFcn(in) == sqrt(3);
+ 
+## Workspace Variable Ans
 
-**Rationale:**
+**Description:** The workspace variable ans **SHOULD NOT** be used.
 
-##
+**Rationale:** Use of the workspace variable ans reduces the robustness and security of the code. 
 
-**Description:**
+## Debugging Functions
 
-**Rationale:**
+**Description:** Debugging functions such as dbstep, dbcont, dbquit, keyboardor other functions that interact with the MATLAB debugger **SHOULD NOT** be used within a script. 
 
-##
+**Rationale:** These functions that interact with the MATLAB debugger reduce the robustness of the code. 
 
-**Description:**
+## Logical Indexing
 
-**Rationale:**
+**Description:** Logical indexing **SHOULD** be used instead of linear or subscript indexing where possible.
 
-##
+**Rationale:** Logical indexing is faster and more readable. 
 
-**Description:**
+DO:
+	index = (v > MIN) & (v < MAX); 
+ 
+DON'T
+	index = intersect(find(v > MIN), find(v < MAX));
+ 
+## Loop Vectorization
 
-**Rationale:**
+**Description:** Vectorization **SHOULD** be used to apply operations to arrays where feasible.
 
-##
+**Rationale:** Vectorized loops are faster, more robust, more readable, and more maintainable. 
 
-**Description:**
+DO:
+	dataResult = dataset < limit; 
+ 
+DON'T:
+	dataResult = false(size(dataset)); 
+	 
+	for iElem = 1 : numel(dataset) 
+	    if dataset(iElem) < limit(iElem) 
+	        dataResult(iElem) = true; 
+	    else 
+	        dataResult(iElem) = false; 
+	    end 
+	end
 
-**Rationale:**
+## Zero Before Decimal Point
 
-##
+**Description:** A zero before the decimal point **SHOULD** be used in numeric expressions. 
 
-**Description:**
+**Rationale:** Increases the readability of the code. 
 
-**Rationale:**
+DO:
+	THRESHOLD = 0.5;
+DON'T:
+	THRESHOLD = .5;
 
-##
+## Accessing Other Workspaces
 
-**Description:**
+**Description:** Functions accessing workspaces outside the scope of the current function, such as assignin, evalin, clc, **SHOULD NOT** be used within scripts. 
 
-**Rationale:**
+**Rationale:** These functions reduce the portability, robustness and readability of the code. 
+
+## Use Switch Blocks
+
+**Description:** A switch block **SHOULD** be used instead of many if-elseif-else statements when possible. 
+
+**Rationale:** The notation of a switch block is more concise and therefore, more readable and easier to maintain. 
+
+DO:
+	switch name 
+	    case "Bill" 
+	        ... 
+	    case {"Judith", "Bob"} 
+	        ... 
+	    case "Steve" 
+	        ... 
+	    otherwise 
+	        ... 
+	end 
+
+DON'T:
+	if name == "Bill" 
+	    ... 
+	elseif ismember(name, ["Judith", "Bob"]) 
+	    ... 
+	elseif name == "Steve" 
+	    ... 
+	else 
+	    ... 
+	end
 
 ##
 
