@@ -509,6 +509,7 @@ DON'T:
 **Rationale:** Consistent constant definition allows for easy identification.
 
 DO:
+
 	function testConstants(x) 
 		MAX_Z = 100; 
 		 
