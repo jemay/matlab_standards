@@ -948,61 +948,100 @@ DON'T:
 	    ... 
 	end
 
-##
+# High Level Guidelines
+
+## Complexity
+
+**Description:** The number of lines of code and complexity of functions **SHOULD** be minimized as appropriate, especially for nested functions and methods in a classdef file. As a rule, functions should do only one thing.
+
+**Rationale:** Short functions are more likely to be readable, reusable and testable. 
+
+## Number of Function Arguments
+
+**Description:** The number of inputs and outputs of a function **SHOULD** be limited to five. If necessary, combine multiple arguments into a struct. 
+
+**Rationale:** This helps prevent a long calling syntax, which in turn improves the readability and reusability of the code. 
+
+DO:
+
+	out = computeWeight(blockData, nBlocks, idx); 
+ 
+DON'T:
+
+	out = computeWeight(blockHeight, blockWidth, blockDepth, density, nBlocks, idx);
+
+## Constructos with Single Output
+
+**Description:** Every constructor **MUST** have exactly one output: an object of the class. 
+
+**Rationale:** A second constructor output is unusual, so will be unexpected for readers of the code. 
+
+DO:
+
+	classdef Computer 
+	    methods 
+	        function obj = Computer(in) 
+	            obj.value = in; 
+	        end 
+	    end 
+	end 
+
+DON'T:
+
+	classdef Computer 
+	    methods 
+	        function [obj, out2] = Computer(in) 
+	            obj.value = in; 
+	            out2 = 2 * in; 
+	        end 
+	    end 
+	end
+
+## Scripts
+
+**Description:** Functions **SHOULD** be used instead of scripts, even if there are no inputs or outputs. 
+
+**Rationale:** The scope of variables in a script is not bounded as one might expect. It is therefore safer to use functions instead. Additionally, scripts are not compatible with Matlab Coder. 
+
+## Editor Warnings
+
+**Description:** Code Analyzer messages shown in the MATLAB editor **SHOULD** be prevented or suppressed. When the messages cannot be prevented, suppress them on an individual basis and add the reason in the comments. 
+
+**Rationale:** The messages usually indicate that improvements can be made to the performance or stability of the code. Adding file-wide Code Analyzer suppressions is discouraged because new triggers of the messages may be overlooked. 
+
+DO:
+
+	%#ok<ABCDE> Suppress the Code Analyzer warning on this line alone. 
+ 
+DON'T:
+
+	%#ok<*ABCDE> Suppress a Code Analyzer warning in the entire file.
+
+## Getters and Setters
+
+**Description:** Dependent properties **SHOULD** not be used. Write explicit methods for getting or setting property values if necessary instead of get.<property> and set.<property>syntax.
+
+**Rationale:** Property getters and setters can cause unexpected behaviour because code is run unexpectedly when the property's value is changed or requested. 
+
+## Nesting Depth
+
+**Description:** Clocks of code **SHOULD NOT** be nested deeper than ten levels. If necessary, refactor into multiple functions. When possible, keep nesting depth within 5.
+
+**Rationale:** Deeply nested code is often less readable and it can be a sign of inefficient code. 
+
+## Repeated Code
+
+**Description:** If a function contains a block of code that is repeated more than one time, it **SHOULD** be refactored into a single function. 
+
+**Rationale:** Refactoring of repeated blocks of code into single functions increases the maintainability, readability and reusability of the code. 
+
+## Structure Ownership
 
 **Description:**
 
 **Rationale:**
 
-##
-
-**Description:**
-
-**Rationale:**
-
-##
-
-**Description:**
-
-**Rationale:**
-
-##
-
-**Description:**
-
-**Rationale:**
-
-##
-
-**Description:**
-
-**Rationale:**
-
-##
-
-**Description:**
-
-**Rationale:**
-
-##
-
-**Description:**
-
-**Rationale:**
-
-##
-
-**Description:**
-
-**Rationale:**
-
-##
-
-**Description:**
-
-**Rationale:**
-
-##
+## Single Responsibility
 
 **Description:**
 
