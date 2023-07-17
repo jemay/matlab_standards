@@ -286,9 +286,7 @@ DON'T:
 
  ## Whitespace in Statements
 
- **Description:** The following operators **SHOULD** be surrounded with spaces: 
-= : ^ == <= >= < > ~= & &&  | ||  + - * .* /  
-A space **SHOULD NOT** be used between the unary minus-sign and its operand. 
+ **Description:** The following operators **SHOULD** be surrounded with spaces: = : ^ == <= >= < > ~= & &&  | ||  + - * .* /  A space **SHOULD NOT** be used between the unary minus-sign and its operand. 
 
 **Rationale:** Whitespace around operators often leads to improved readability. As an exception, do not use spaces around the equals signs when using the Name=Value syntax introduced in MATLAB R2021a. 
 
