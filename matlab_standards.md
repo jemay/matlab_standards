@@ -1073,7 +1073,7 @@ DON'T:
 
 ## Reuse of Iterator Variables
 
-**Description:** Iterator variables **SHOULD NOT** be used within the same function. Limit the scope of an iterator variable to its for-loop. 
+**Description:** Iterator variables **SHOULD NOT** be reused within the same function. Limit the scope of an iterator variable to its for-loop. 
 
 **Rationale:** Prevents renaming all iterators when only the one for a specific loop must be renamed. Also improves readability. 
 
@@ -1156,6 +1156,24 @@ DON'T:
 		    vectorOut(ii) = processScalar(vectorIn(ii)); 
 		end 
 	end
+
+## Java Dependency
+
+**Description:** Code **SHOULD** be independent of Java and therefore **SHOULD NOT** have Java dependencies, dependencies such as: javacomponent, javaMethod, javaObjectEDTetc. 
+
+**Rationale:** Java packages and subpackages will not be available in MATLAB in a future release. 
+
+##
+
+**Description:**
+
+**Rationale:**
+
+##
+
+**Description:**
+
+**Rationale:**
 
 ##
 
