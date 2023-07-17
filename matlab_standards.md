@@ -259,6 +259,7 @@ This section describes recommendations for code layout and comments.
 **Rationale:** Consistent comment syntax improves readability.
 
 DO:
+
 	% This is a comment. 
 	% This is also a comment. 
 
@@ -275,11 +276,13 @@ DON'T:
 **Rationale:** Consistent indentation improves readability.
 
 DO: 
+
 	function computeWeight(in) 
    		weight = 2 * in; 
 	end 
 
 DON'T:
+
 	function computeWeight(in) 
 	weight = 2 * in; 
 	end 
@@ -293,9 +296,11 @@ A space **SHOULD NOT** be used between the unary minus-sign and its operand.
 **Rationale:** Whitespace around operators often leads to improved readability. As an exception, do not use spaces around the equals signs when using the Name=Value syntax introduced in MATLAB R2021a. 
 
 DO:
+
 	isValid = (y > 0) && (x == -1); 
  
 DON'T:
+
 	isValid=(y>0)&&(x==-1);
 
 ## Whitespace in Characters
@@ -305,11 +310,13 @@ DON'T:
 **Rationale:** A clear separation of keywords from other code improves readability. 
 
 DO:
+
 	while ismember(x, [3, 5, 7, 11, 13]) 
     		x = x + 2; 
 	end
  
 DON'T
+
 	while(ismember(x, [3,5,7,11,13])) 
 	    x = x + 2; 
 	end
@@ -326,6 +333,7 @@ DO:
 	            'Ut luctus arcu ex, at viverra nibh malesuada ac. Proin vel arcu leo.']; 
 
 DON'T
+
 	theText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut luctus arcu ex, at viverra nibh malesuada ac. Proin vel arcu leo.';
 
 ## Indentation Length
@@ -335,6 +343,7 @@ DON'T
 **Rationale:** Using an adequate and consistent number of spaces for indentation improves readability and prevents unnecessary changes when others work on the code. 
 
 DO:
+
 	if x > 0 
 	    if x < 2 
 	        disp(x) 
@@ -342,6 +351,7 @@ DO:
 	end 
 
 DON'T
+
 	if x > 0 
 	 if x < 2 
 	   disp(x) 
@@ -355,12 +365,14 @@ DON'T
 **Rationale:** Readability will be improved if issues with the code are fixed immediately instead of documented in the comments. 
 
 DO:
+
 	x = 2; 
 	y = 3 * x + z;  
 	 
 	z = [1, 23, 8.1] * (x ^ 3.1415) * sqrt(y); 
 
 DON'T
+
 	x = 2; 
 	 
 	% FIXME: This piece of ugly code is copied from StackExchange. 
@@ -373,10 +385,12 @@ DON'T
 **Rationale:** This improves readability, especially in arrays of strings or character vectors. 
 
 DO: 
+
 	fig.Position    = [0, 1000, 1.5, 130]; 
 	saying          = ['An apple a ', period, ' keeps the doctor away.']; 
  
 DON'T: 
+
 	fig.Position    = [0 1000 1.5 130]; 
 	saying          = ['An apple a ' period ' keeps the doctor away.']; 
 
@@ -387,11 +401,13 @@ DON'T:
 **Rationale:** By placing binary operators at the start of the line, it is immediately clear what the line does. 
 
 DO: 
+
 	isDone = isImplemented ... 
 	    && isTested ... 
 	    && isDocumented; 
      
 DON'T: 
+
 	isDone = isImplemented && ... 
 	    isTested && ... 
 	    isDocumented; 
@@ -403,6 +419,7 @@ DON'T:
 **Rationale:** Having multiple blocks with the same attributes is unnecessary and decreases the readability of classdef files. 
 
 DON'T
+
 	classdef Rocket 
 	    properties (Access = public, Hidden = false, Constant) 
 	        Fuel = "Nuclear" 
@@ -414,6 +431,7 @@ DON'T
 	end
 
 DO
+
 	classdef Rocket 
 	    properties (Constant) 
 	        Fuel = "Nuclear" 
@@ -434,9 +452,11 @@ DO
 **Rationale:** This increases readability, and makes the code more likely to be found and less likely to be reinvented. 
 
 DO:
+
 	LINK TO HEADER EXAMPLE
 
 DON'T:
+
 	function [avg, maxSize] = measureSize(obj, dim) 
 		avg = mean(obj.Size, dim); 
 		maxSize = max(obj.Size, dim); 
@@ -449,6 +469,7 @@ DON'T:
 **Rationale:** Increases the readability of the code. 
 
 DO:
+
 	% Shift to origin. 
 	deltaX = mean(xIn); 
 	xOutc = xIn - deltaX; 
@@ -461,6 +482,7 @@ DO:
 	xOut = xOut + deltaX; 
 
 DON'T
+
 	deltaX = mean(xIn); 
 	xOut = xIn - deltaX; 
 	scalingFactor = newZ / currentZ; 
@@ -474,11 +496,13 @@ DON'T
 **Rationale:** This increases the readability of code. Error-strewn and poorly constructed comments reflect on the code they accompany. 
 
 DO:
+
 	% Get the scaling factor. 
 	scalingFactor = newZ / currentZ; 
 	xOut = xOut * scalingFactor; % Now rescaled.  
 
 DON'T:
+
 	% get sclaing factor 
 	scaling_factor = new_z / current_z; 
 	x_out = x_out * scaling_factor; % now recslaed
@@ -491,12 +515,14 @@ DON'T:
 **Rationale:** This improves readability of the code by making it clearer what fields are defined and by what values. 
 
 DO:
+
 	s = struct(... 
 	    "name",     "Albert", ... 
 	    "age",      2021 - 1979, ... 
 	    "isValid",  ismember("Albert", allNames)) 
      
 DON'T:
+
 	s = struct("name", "Albert", "age", 2021 - 1979, "isValid", ismember("Albert", allNames)); 
 
 
@@ -518,6 +544,7 @@ DO:
 	end 
  
 DON'T:
+
 	function testConstants(x) 
 		y = 3 * x; 
 		MAX_Z = 100; 
@@ -531,6 +558,7 @@ DON'T:
 **Rationale:** This encourages reuse and documentation of numerical constants and improves overall readability.
 
 DO:
+
 	DECK_SIZE   = 52; 
 	N_VALUES    = 13; 
 	 
@@ -539,6 +567,7 @@ DO:
 	end 
 
 DON'T:
+
 	for iPick = 1 : 52 
 	    disp(randi(13)); 
 	end 
@@ -550,9 +579,11 @@ DON'T:
 **Rationale:** This helps to emphasize the fact that they are function calls and not variables or properties. 
 
 DO:
+
 	x = rand() * 2; 
 
 DON'T:
+
 	x = rand * 2;
 
 ## One Statement Per Line
@@ -564,6 +595,7 @@ DON'T:
 **Exception:** One may declare a maximum of three variables on a single line if they are all of the same type or unit. One may place an if, for or while statement on one line if there is exactly one statement inside of the loop. 
 
 DO:
+
 	for iNode = 1 : 3 
 	    x = x + iNode; 
 	    disp(x); 
@@ -580,6 +612,7 @@ DO:
 	time_elapsed = time_stop - time_start; 
 
 DON'T:
+
 	for iNode = 1 : 3, x = x + iNode; disp(x); end 
 	 
 	a = 1;  % Unitless 
@@ -593,6 +626,7 @@ DON'T:
 	time_elapsed = time_stop - time_start; 
 
 EXCEPTIONS:
+
 	% Variable declarations:
 	persistent x, y; 
 	 
@@ -613,6 +647,7 @@ EXCEPTIONS:
 **Rationale:** By including an else section, no execution paths are overlooked. Additionally, code coverage can be accurately reported because without else, it is unclear whether the if-condition is ever false. 
 
 DO:
+
 	if x > 0 
 	    saveData() 
 	else 
@@ -620,6 +655,7 @@ DO:
 	end 
 
 DON'T:
+
 	if x > 0 
 	    saveData() 
 	end
@@ -631,6 +667,7 @@ DON'T:
 **Rationale:** By including an otherwise section, no execution paths are overlooked. Additionally, code coverage can be accurately reported because without otherwise, it is unclear whether it happens that none of the cases occur. 
 
 DO:
+
 	switch reply 
 	    case "Yes" 
 	        saveData() 
@@ -642,6 +679,7 @@ DO:
 	end 
 
 DON'T:
+
 	switch reply 
 	    case "Yes" 
 	        saveData() 
@@ -656,9 +694,11 @@ DON'T:
 **Rationale:** Mixing operand types per operator can cause unexpected results and may lead to errors in case of true incompatibilities. 
 
 DO:
+
 	d = (a * b > 0) && c; 
  
 DON'T:
+
 	d = a * b && c;
 
 ## Parentheses in Logical Expressions
@@ -668,9 +708,11 @@ DON'T:
 **Rationale:** By clarifying the precedence of the operands in such expressions, readability is improved and unexpected behaviour is prevented. 
 
 DO:
+
 	d = a && b || c;
  
 DON'T:
+
 	d = (a && b) || c; 
 
 ## Parentheses in Mathematical Expressions
@@ -680,10 +722,12 @@ DON'T:
 **Rationale:** By clarifying the precedence of the operands in such expressions, readability is improved and unexpected behaviour is prevented. 
 
 DO:
+
 	d = (a * b) + c; 
 	h = (f / 2) * g; 
  
 DON'T:
+
 	d = a * b + c; 
 	h = f / 2 * g;
 
@@ -706,8 +750,10 @@ DON'T:
 **Rationale:** These constructs may cause unreachable code or unintended behaviour. 
 
 DO:
+
 	disp(x)
 DON'T:
+
 	if x > 0 || true 
 	    disp(x) 
 	end    
@@ -719,11 +765,13 @@ DON'T:
 **Rationale:** Lines of code or functions using the struct might assume that all fields are already there, resulting in an error if the field is not there. 
 
 DO:
+
 	s = struct("f", 2, "g", 3, "h", 'new field'); 
 	 
 	computeCost(s); 
  
 DON'T:
+
 	s = struct("f", 2, "g", 3); 
 	 
 	computeCost(s); 
@@ -743,6 +791,7 @@ Additionally, it may be overlooked when variables are defined or altered by call
 **Rationale:** Using break, continue or return decreases readability because the end of the function is not always reached. By avoiding these keywords, the flow of the code remains clear. However, these keywords can be useful to reduce complexity and improve performance. 
 
 DO:
+
 	if isempty(x) 
 	    % No further actions. 
 	else 
@@ -750,6 +799,7 @@ DO:
 	end  
 
 DON'T:
+
 	if isempty(x) 
 	    return 
 	end 
@@ -763,9 +813,11 @@ DON'T:
 **Rationale:** When using the !program_to_execute syntax to execute external programs, no dynamic input or program names can be used. 
 
 DO:
+
 	system('mycommand') 
  
 DON'T:
+
 	!mycommand 
 
 ## Dependencies Known
@@ -781,6 +833,7 @@ DON'T:
 **Rationale:** Using try for simple error suppression can result in poor performance and unexpected behaviour. When a different error occurs than the one expected, it can go undetected because of the try/catch. 
 
 DO:
+
 	if isfield(container, 'nElements') 
 	    nElems = container.nElements; 
 	else 
@@ -788,6 +841,7 @@ DO:
 	end 
  
 DON'T:
+
 	try 
 	    nElems = container.nElements; 
 	catch 
@@ -801,8 +855,10 @@ DON'T:
 **Rationale:** Rounding errors due to algorithm design or machine precision can cause unexpected inequalities. 
 
 DO:
+
 	out = abs(myFcn(in) - sqrt(3)) < 1e-12; 
 DON'T:
+
 	out = myFcn(in) == sqrt(3);
  
 ## Workspace Variable Ans
@@ -824,9 +880,11 @@ DON'T:
 **Rationale:** Logical indexing is faster and more readable. 
 
 DO:
+
 	index = (v > MIN) & (v < MAX); 
  
 DON'T
+
 	index = intersect(find(v > MIN), find(v < MAX));
  
 ## Loop Vectorization
@@ -836,9 +894,11 @@ DON'T
 **Rationale:** Vectorized loops are faster, more robust, more readable, and more maintainable. 
 
 DO:
+
 	dataResult = dataset < limit; 
  
 DON'T:
+
 	dataResult = false(size(dataset)); 
 	 
 	for iElem = 1 : numel(dataset) 
@@ -856,8 +916,10 @@ DON'T:
 **Rationale:** Increases the readability of the code. 
 
 DO:
+
 	THRESHOLD = 0.5;
 DON'T:
+
 	THRESHOLD = .5;
 
 ## Accessing Other Workspaces
@@ -873,6 +935,7 @@ DON'T:
 **Rationale:** The notation of a switch block is more concise and therefore, more readable and easier to maintain. 
 
 DO:
+
 	switch name 
 	    case "Bill" 
 	        ... 
@@ -885,6 +948,7 @@ DO:
 	end 
 
 DON'T:
+
 	if name == "Bill" 
 	    ... 
 	elseif ismember(name, ["Judith", "Bob"]) 
