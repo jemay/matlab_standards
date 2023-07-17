@@ -4,7 +4,6 @@
 
 **Purpose:** insert a fancy sentence about readability and such
 
-
 # NAMING CONVENTIONS
 
 This section describes recommendations for naming conventions.
