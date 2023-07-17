@@ -32,9 +32,7 @@ DON'T:
 
 	time = 2; 
 	accelerationInMillimetersPerSecondSquared = 1000;
-	
-	
-
+		
 ## Negated Boolean Names
 
 **Description:** Variable names **SHOULD NOT** include the word not.
@@ -66,8 +64,7 @@ DO:
 DON'T:
 
 	function temperatureK = convertCelsiusToKelvin(temperatureC) 
-	
-	
+		
 ## The 'n' Prefix
 
 **Description:** The prefix n **SHOULD** be used for variables that represent a number of things. The prefix **SHOULD NOT** be used for other purposes, and other prefixes for representing the number of things **SHOULD NOT**.
