@@ -952,7 +952,7 @@ DON'T:
 
 ## Complexity
 
-**Description:** The number of lines of code and complexity of functions **SHOULD** be minimized as appropriate, especially for nested functions and methods in a classdef file. As a rule, functions should do only one thing.
+**Description:** The number of lines of code and complexity of functions **SHOULD** be minimized as appropriate, especially for nested functions and methods in a classdef file. See standard on Single Responsibility below.
 
 **Rationale:** Short functions are more likely to be readable, reusable and testable. 
 
@@ -1037,51 +1037,125 @@ DON'T:
 
 ## Structure Ownership
 
-**Description:**
+**Description:** Ownership of a structure resides with the creator of that structure, so fields **SHOULD NOT** be added or removed from an existing structure outside of the function in which it was created. 
 
-**Rationale:**
+**Rationale:** Adding or removing fields from an existing structure outside of the function in which it was created reduces the robustness of the code. Related to coder compatibility, in generated code, adding a new field to a structure that has already been read or indexed will cause an error. 
+
+DO:
+
+	function [out] = calculateSpeed(car) 
+	 
+	out = car; 
+	 
+	% clear the field 
+	car.speed = []; 
+
+DON'T:
+
+	function [out] = calculateSpeed(car) 
+	 
+	out = car; 
+	 
+	% do not remove fields from existing struct 
+	car = rmfield(car, 'speed');
 
 ## Single Responsibility
 
-**Description:**
+**Description:** Single responsibility principle : all sub-functions and most functions **SHOULD** do one thing very well, and encapsulate a single idea. 
 
-**Rationale:**
+**Rationale:** The single responsibility principle makes code more readable, modular, and testable. Multi-purpose functions can often be split up into atomic units which are called on the input data in sequence. Functions should not try to be all things to all users. 
 
-##
+## Commented Out Code
 
-**Description:**
+**Description:** Commented-out lines of code **SHOULD** be removed.
 
-**Rationale:**
+**Rationale:** Removing commented-out code increases readability and it prevents someone from unintentionally enabling it again. 
 
-##
+## Reuse of Iterator Variables
 
-**Description:**
+**Description:** Iterator variables **SHOULD NOT** be used within the same function. Limit the scope of an iterator variable to its for-loop. 
 
-**Rationale:**
+**Rationale:** Prevents renaming all iterators when only the one for a specific loop must be renamed. Also improves readability. 
 
-##
+DO:
 
-**Description:**
+	for iNode = 1 : numel(nodes) 
+	    ... 
+	end 
+	 
+	for iValue = 1 : 2 : 11 
+	    ... 
+	end 
 
-**Rationale:**
+DON'T:
 
-##
+	for iNode = 1 : numel(nodes) 
+	    ... 
+	end 
+	 
+	for iNode = 1 : 2 : 11 
+	    ... 
+	end
 
-**Description:**
 
-**Rationale:**
+## Rewriting Existing Functions
 
-##
+**Description:** An existing function **SHOULD NOT** be copy-pasted as a local function of your code. Instead, use a wrapper around existing functionality. 
 
-**Description:**
+**Rationale:** Multiple forks, duplications and reinventions of the wheel make a code base less modular and less maintainable. 
 
-**Rationale:**
+## Columns with Implicit Meaning
 
-##
+**Description:** Matrices in which rows or columns have implicit meaning **SHOULD NOT** be used. Use individual vectors instead. 
 
-**Description:**
+**Rationale:** Using matrices with implicit row or column meanings reduces the readability and robustness of the code. 
 
-**Rationale:**
+DO:
+
+	distance = sqrt(x .^ 2 + y .^ 2); 
+ 
+DON'T:
+
+	distance = sqrt(coordinates(:, 1) .^ 2 + coordinates(:, 2) .^ 2); 
+
+## Nested Functions
+
+**Description:** Use of nested functions **SHOULD** be minimized. Use only when really beneficial. 
+
+**Rationale:** Nested functions reduce the readability and robustness of the code and can not be tested independently. 
+
+## Input Parameter Dependency
+
+**Description:** Function input arguments **SHOULD** be independent, and the function **SHOULD** not assume a dependency between them. 
+
+**Rationale:** Assuming a dependency between independent input parameters reduces the robustness of the code. Conversely, if the inputs to a function are dependent, treating them as independent also reduces robustness. 
+
+DO:
+
+	function [meanV, meanA] = getMeanVandA(distances, timePts) 
+		meanV      = sum(distances) ./ sum(timePts); 
+		velocities = distances ./ timePts; 
+		meanA      = velocities(end) ./ sum(timePts); 
+		end 
+	 
+	function vectorOut = processVector(vectorIn) 
+		for iIdx = 1 : length(vectorIn) 
+		    vectorOut(ii) = processScalar(vectorIn(ii)); 
+		end 
+	end 
+
+DON'T:
+
+	function [meanV, meanA] = getMeanVandA(velocities, distances, timePts) 
+		meanV = sum(distances) ./ sum(timePts); 
+		meanA = velocities(end) ./ sum(timePts); 
+	end 
+	 
+	function vectorOut = processVector(vectorIn, vectorLength) 
+		for iIdx = 1 : vectorLength 
+		    vectorOut(ii) = processScalar(vectorIn(ii)); 
+		end 
+	end
 
 ##
 
