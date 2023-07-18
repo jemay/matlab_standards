@@ -196,11 +196,30 @@ DON'T:
 	sliderstuff 
 
 
-## Casing
+## Casing (General)
 
 **Description:** Variables, functions, classes, and other MATLAB objects **MUST** each use a consistent casing style throughout a script.
 
-**Rationale:** Consistent casing increases readability by making clear what each object is.
+**Rationale:** Consistent casing increases readability and maintainability.
+
+**Types of Casing:**
+
+	* b (single lowercase letter) 
+	* B (single uppercase letter) 
+	* lowercase 
+	* lower_case_with_underscores 
+	* UPPERCASE 
+	* UPPER_CASE_WITH_UNDERSCORES 
+	* CapitalizedWords (or CapWords, or CamelCase ) 
+	* Acryonyms should retain caps 
+	* mixedCase (differs from CapitalizedWords by initial lowercase character!) 
+	* Capitalized_Words_With_Underscores 
+
+## Constant Casing
+
+**Description:** Constant variable names **MUST** be written in all-caps with underscores separating the words (UPPER_CASE_WITH_UNDERSCORES). 
+
+**Rationale:** Enforcing this kind of casing easily distinguishes constants from actual variables.
 
 ## The 'is' Prefix
 
@@ -723,9 +742,17 @@ DON'T:
 
 ## Assert Inputs
 
-**Description:**
+**Description:** Every call to the built-in assert function **MUST** have an error identifier and a message as second and third inputs. 
 
-**Rationale:**
+**Rationale:** Including an identifier allows for better testing and exception handling. Including a proper error message directly clarifies the problem. 
+
+DO:
+
+	assert(~isempty(list), 'ClassName:MethodName:ListIsEmpty', 'The list shall not be empty.') 
+ 
+DON'T:
+
+	assert(~isempty(list))
 
 ## Global Variables
 
