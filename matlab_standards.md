@@ -198,8 +198,9 @@ DON'T:
 
 ## Casing
 
-TBD
+**Description:** Variables, functions, classes, and other MATLAB objects **MUST** each use a consistent casing style throughout a script.
 
+**Rationale:** Consistent casing increases readability by making clear what each object is.
 
 ## The 'is' Prefix
 
