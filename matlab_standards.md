@@ -263,6 +263,56 @@ DON'T:
 
 This section describes recommendations for code layout and comments.
 
+## Comment Usage
+
+**Description:** All code **MUST** use comments to explain code functionality. Comments should explain what the code does, how it works, and why it is performing this function. 
+
+**Rationale:** Descriptive comments make it easier to read code. 
+
+## Comment Content
+
+**Description:** Comments **MUST NOT** use the same terminology as the code. Use different words for describing what a particular object is, or for what a piece of code does. 
+
+**Rationale:** Comments that simply restate the code in plain English do not help explain what the code is doing. 
+
+DO:
+
+	BPM_x = 12; % horizontal position 
+ 
+	% find where the horizontal difference orbit is within defined range by iterating through  
+	% the difference orbit array by BPM, and comparing the to the acceptance difference of 0.1  
+	% in order to see where the orbit deviates horizontally. 
+	in_range = false(nBPMS, 1); 
+	for iBPM = 1:nBPMS 
+		if diff_orbit_x(iBPM) < 0.1 
+			is_in_range(iBPM) = True; 
+		end 
+	end 
+
+DON'T:
+
+	BPM_x = 12; % x BPM coordinate 
+	 
+	% find x BPMs in range 
+	in_range = false(nBPMS, 1); 
+	for iBPM = 1:nBPMS 
+		if diff_orbit_x(iBPM) < 0.1 
+			Is_in_range(iBPM) = True; 
+		end 
+	end 
+
+## Comment Frequency
+
+**Description:** Comments **SHOULD** be used at least every 15 lines. 
+
+**Rationale:** This rule helps to avoid going too long without commenting code. 
+
+## Sign and Date Comments
+
+**Description:** Comments with a date and signature **MAY** be used when adding code to an existinf file.
+
+**Rationale:** This ensures that other code maintainers have access to information about the code history regardless of how version control is deployed. 
+
 ## Comment Blocks
 
 **Description:** Comment blocks **SHOULD NOT** be used.
@@ -534,6 +584,11 @@ DON'T:
 
 	s = struct("name", "Albert", "age", 2021 - 1979, "isValid", ismember("Albert", allNames)); 
 
+## End Keyword
+
+**Description:** Functions **MUST** conclude with the "end" keyword.
+
+**Rationale:** Using the "end" keyword makes it easier to match indentations in code organization. 
 
 # Statements and Expressions
 
@@ -558,6 +613,31 @@ DON'T:
 		y = 3 * x; 
 		MAX_Z = 100; 
 		z = min(y, MAX_Z); 
+	end
+
+## Variable Declarations
+
+**Description:** Variables **SHOULD** be declared at the top of a function, even for variables that do not yet have a value.  
+
+**Rationale:** Declaring variables at once improves readability, and pre-allocating memory to variables improves code performance 
+
+DO:
+
+	function [var1, var2, var3] = get_vars() 
+		var1; % the first variable 
+		var2; % the second variable 
+		var3; % the third variable 
+		var1 = 10 ; 
+		var2 = var1^2; 
+		var3 = var2 * 12; 
+	end 
+
+DON'T:
+
+	function [var1, var2, var3] = get_vars() 
+		var1 = 10 ; 
+		var2 = var1^2; 
+		var3 = var2 * 12; 
 	end
 
 ## Magic Numbers
@@ -774,6 +854,24 @@ DON'T:
 	if x > 0 || true 
 	    disp(x) 
 	end    
+
+## Struct for Related Entities
+
+**Description:** A struct **SHOULD** be used to group together related entities. 
+
+**Rationale:** Using a struct for related entities improves code organization. 
+
+DO:
+
+	Bpm.x 
+	Bpm.y 
+	Bpm.tmit 
+
+DON'T:
+
+	Bpm_x 
+	Bpm_y 
+	Bpm_tmit 
 
 ## Group Struct Field Definitions
 
@@ -1191,21 +1289,66 @@ DON'T:
 
 **Rationale:** Java packages and subpackages will not be available in MATLAB in a future release. 
 
-##
+# Standards for Graphical User Interfaces (GUIs)
 
-**Description:**
+## Error Handling
 
-**Rationale:**
+**Description:** Callback functions **MUST** have all their code in a try/catch loop, and follow appropriate error handling methods.
 
-##
+**Rationale:** Proper error handling prevents an application from crashing.
 
-**Description:**
+## Separable Models
 
-**Rationale:**
+**Description:** Model classes **SHOULD** be able to run without the GUI itself. Consider the separate aspects of a model, including service logic, service configuration, and application state management.
 
-##
+**Rationale:** Separable models allow for service logic to be run without the overhead of the GUI, increasing the usability of code across multiple platforms.
 
-**Description:**
+## Resizing
 
-**Rationale:**
+**Description:** GUIs **MUST** be resizable for personal computers. Consider using grid layouts to ensure resizability.
+
+**Rationale:** The size of a GUI may vary between an individual's personal computer, and an operator interface in the control room. GUIs should be usable on both.
+
+## GUI Documentation
+
+**Description:** GUIs **MUST** have documentation explaining their use, as well as their design.
+
+**Rationale:** Usage documentation allows users to learn how to use a GUI, and design documentation allows other developers to contribute to and maintain code.
+
+## Documentation Links
+
+**Description:** GUIs **MUST** have a component linking to documentation.
+
+**Rationale:** This allows users to easily access documentation.
+
+## Machine State Indication
+
+**Description:** GUIs **SHOULD** indicate the state of the machine with which they are interaction, in particular which beam line.
+
+**Rationale:** This makes clear what will happen when GUI actions are taken.
+
+## Print To Log
+
+**Description:** GUIs **SHOULD** have a print to log button that automatically saves its data.
+
+**Rationale:** This ensures control or analysis using a GUI can be tracked by SLAC elogs, and that data is available to recreate figures.
+
+## Data Save Location
+
+**Description:** Data **SHOULD** be saved using the following format: $MATLABDATAFILES/YYYY/YYYY-MM/YYYY-MM-DD, where $MATLABDATAFILES is an environment variable indicating the root directory for saving data. For example, on a production network, /u1/lcls/matlab/data/2023/2023-07/2023-07-18 for files saved on July 18th, 2023. Consider using the util_dataSave function to take care of this.
+
+**Rationale:** This is the default data directory for SLAC AD LCLS work.
+
+## Tooltips
+
+**Description:** GUIs **SHOULD** have tooltips that explain what components do.
+
+**Rationale:** Tooltips make GUIs easier to use.
+
+## Style Guide
+
+**Description:** GUIs **SHOULD** conform to the style guide detailed <u>here</u>. (Style guide to be inserted)
+
+**Rationale:** The style guide specifies best practices for user experience.
+
 
