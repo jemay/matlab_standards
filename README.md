@@ -8,6 +8,6 @@
 
 **Use of Normative Statements:**
 
-  **MUST,** in all capitalized letters, indicates a mandatory standard.
-  **SHOULD,** in all capitalized letters, indicates a recommended standard.
-  **MAY,** in all capitalized letters, indicates a recommended, but optional practice.
+  * **MUST,** in all capitalized letters, indicates a mandatory standard.
+  * **SHOULD,** in all capitalized letters, indicates a recommended standard.
+  * **MAY,** in all capitalized letters, indicates a recommended, but optional practice.
