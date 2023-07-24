@@ -23,7 +23,7 @@ time_s = 120;
 acceleration = 1000; % [mm/s^2] 
 ```	
 DON'T:
-```MATLAB
+```Matlab
 time = 2; 
 accelerationInMillimetersPerSecondSquared = 1000;
 ```
@@ -36,15 +36,15 @@ accelerationInMillimetersPerSecondSquared = 1000;
 
 DO:
 ```Matlab
-	if isValid && ~isFound 
-    	error('My error message.') 
-	end 
+if isValid && ~isFound 
+	error('My error message.') 
+end 
 ```
 DON'T:
 ```Matlab
-	if ~notValid && isNotFound 
-		error('My error message.') 
-	end 
+if ~notValid && isNotFound 
+	error('My error message.') 
+end 
 ```
 ## Descriptive Names
 
