@@ -66,11 +66,11 @@
     --code-theme-function: var(--trueblack);
     --code-theme-keyword: var(--matblue);
     --code-theme-operator: var(--trueblack);
-    --code-theme-punctuation: var(--lagunita);
-    --code-theme-selection: var(--lime);
+    --code-theme-punctuation: var(--trueblack);
+    --code-theme-selection: var(--trueblack);
     --code-theme-selector: var(--matpink);
-    --code-theme-tag: var(--matblue);
-    --code-theme-text: var(--matgreen); 
+    --code-theme-tag: var(--trueblack);
+    --code-theme-text: var(--trueblack); 
     --code-theme-variable: var(--trueblack);
   }
 
