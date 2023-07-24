@@ -72,6 +72,7 @@
     --code-theme-tag: var(--trueblack);
     --code-theme-text: var(--trueblack); 
     --code-theme-variable: var(--trueblack);
+    --code-theme-string: var(--matpink);
   }
 
   footer .partner {
