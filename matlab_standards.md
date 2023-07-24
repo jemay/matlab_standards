@@ -17,11 +17,11 @@ This section describes recommendations for naming conventions.
 **Rationale:** Maintain readability by using concise variable names.
 
 DO:
-
+'''Matlab
 	time_min = 2; 
 	time_s = 120; 
 	acceleration = 1000; % [mm/s^2] 
-	
+'''	
 DON'T:
 
 	time = 2; 
