@@ -23,9 +23,9 @@ time_s = 120;
 acceleration = 1000; % [mm/s^2] 
 ```	
 DON'T:
-```Matlab
-	time = 2; 
-	accelerationInMillimetersPerSecondSquared = 1000;
+```MATLAB
+time = 2; 
+accelerationInMillimetersPerSecondSquared = 1000;
 ```
 		
 ## Negated Boolean Names
