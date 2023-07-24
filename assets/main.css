@@ -57,7 +57,7 @@
     --search-result-item-color: var(--white);
     --search-result-keyword-background: var(--poppy);
     --search-result-keyword-color: var(--trueblack);
-    --code-theme-background: var(--black10);
+    /*--code-theme-background: var(--black10);
     --code-inline-background: var(--black10);
     --code-theme-comment: var(--white);
     --code-theme-function: var(--digitalredlight);
@@ -68,7 +68,7 @@
     --code-theme-selector: var(--illuminating);
     --code-theme-tag: var(--illuminating);
     --code-theme-text: var(--fog);
-    --code-theme-variable: var(--poppy);
+    --code-theme-variable: var(--poppy); */
   }
 
   footer .partner {
