@@ -17,13 +17,13 @@ This section describes recommendations for naming conventions.
 **Rationale:** Maintain readability by using concise variable names.
 
 DO:
-```
+```matlab
 time_min = 2; 
 time_s = 120; 
 acceleration = 1000; % [mm/s^2] 
 ```	
 DON'T:
-```
+```matlab
 time = 2; 
 accelerationInMillimetersPerSecondSquared = 1000;
 ```
@@ -35,13 +35,13 @@ accelerationInMillimetersPerSecondSquared = 1000;
 **Rationale:** Readability decreases when variables have negated boolean names, especially in combination with the ~ operator.
 
 DO:
-```
+```matlab
 if isValid && ~isFound 
     error('My error message.') 
 end 
 ```
 DON'T:
-```
+```matlab
 if ~notValid && isNotFound 
     error('My error message.') 
 end 
@@ -53,11 +53,11 @@ end
 **Rationale:** This increases the readability of the code.
 
 DO:
-```
+```matlab
 function tk = convC2k(temp)
 ```	
 DON'T:
-```
+```matlab
 function temperatureK = convertCelsiusToKelvin(temperatureC) 
 ```		
 ## The 'n' Prefix
