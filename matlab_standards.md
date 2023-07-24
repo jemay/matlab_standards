@@ -37,13 +37,13 @@ accelerationInMillimetersPerSecondSquared = 1000;
 DO:
 ```Matlab
 if isValid && ~isFound 
-	error('My error message.') 
+    error('My error message.') 
 end 
 ```
 DON'T:
 ```Matlab
 if ~notValid && isNotFound 
-	error('My error message.') 
+    error('My error message.') 
 end 
 ```
 ## Descriptive Names
@@ -53,13 +53,13 @@ end
 **Rationale:** This increases the readability of the code.
 
 DO:
-
-	function tk = convC2k(temp)
-	
+```Matlab
+function tk = convC2k(temp)
+```	
 DON'T:
-
-	function temperatureK = convertCelsiusToKelvin(temperatureC) 
-		
+```Matlab
+function temperatureK = convertCelsiusToKelvin(temperatureC) 
+```		
 ## The 'n' Prefix
 
 **Description:** The prefix n **SHOULD** be used for variables that represent a number of things. The prefix **SHOULD NOT** be used for other purposes, and other prefixes for representing the number of things **SHOULD NOT**.
