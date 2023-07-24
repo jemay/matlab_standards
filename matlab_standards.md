@@ -21,7 +21,8 @@ DO:
 time_min = 2; 
 time_s = 120; 
 acceleration = 1000; % [mm/s^2] 
-```	
+```
+
 DON'T:
 ```matlab
 time = 2; 
@@ -40,12 +41,14 @@ if isValid && ~isFound
     error('My error message.') 
 end 
 ```
+
 DON'T:
 ```matlab
 if ~notValid && isNotFound 
     error('My error message.') 
 end 
 ```
+
 ## Descriptive Names
 
 **Description:** Names for functions, classes, packages and variables **MUST** be precise and descriptive.
@@ -55,11 +58,13 @@ end
 DO:
 ```matlab
 function tk = convC2k(temp)
-```	
+```
+
 DON'T:
 ```matlab
 function temperatureK = convertCelsiusToKelvin(temperatureC) 
-```		
+```
+	
 ## The 'n' Prefix
 
 **Description:** The prefix n **SHOULD** be used for variables that represent a number of things. The prefix **SHOULD NOT** be used for other purposes, and other prefixes for representing the number of things **SHOULD NOT**.
@@ -67,16 +72,18 @@ function temperatureK = convertCelsiusToKelvin(temperatureC)
 **Rationale:** Variables starting with this prefix can easily be identified.
 
 DO:
+```matlab
+nFiles 
+nCars 
+nLines 
+```
 
-	nFiles 
-	nCars 
-	nLines 
-	
 DON'T:
-
-	numberOfFiles 
-	nrCars 
-	lineCount
+```matlab
+numberOfFiles 
+nrCars 
+lineCount
+```
 
 ## Name Length
 
@@ -85,13 +92,14 @@ DON'T:
 **Rationale:** Names shall be descriptive, so should not be too short. However, variable names can sometimes be single characters (x, y) and still be descriptive. Names that are too long can reduce readability because they introduce long lines of code.
 
 DO:
-	
-	maxData = max(data); 
-    
+```matlab
+maxData = max(data);     
+```
 
 DON'T
-
-    maximumValueOfTheEntireSetOfDataPoints = max(data);
+```matlab
+maximumValueOfTheEntireSetOfDataPoints = max(data);
+```
 
 ## Loop Iterator Naming
 
@@ -100,20 +108,22 @@ DON'T
 **Rationale:** Iterator variables of for-loops are easily distinguishable from other variables by using these prefixes.
 
 DO:
-
-	for iNode = 1 : 10 
-		for jPoint = 1 : 3 
+```matlab
+for iNode = 1 : 10 
+    for jPoint = 1 : 3 
        	myGraph(iNode).plotIt(jPoint); 
-    	end 
-	end 
+    end 
+end 
+```
 
 DON'T:
-
-	for nodeIdx = 1 : 10 
-    	for j = 1 : 3 
+```matlab
+for nodeIdx = 1 : 10 
+    for j = 1 : 3 
        	myGraph(nodeIdx).plotIt(j); 
-    	end 
-	end   
+    end 
+end   
+```
 
 ## Parent / Child Name Redundancy
 
@@ -122,15 +132,16 @@ DON'T:
 **Rationale:** When referenced, the fields and properties can have the same phrase multiple times in a row, which is unnecessary.
 
 DO:
-
-	Beam.thickness 
-	chair.weight 
+```matlab
+Beam.thickness 
+chair.weight 
+```
 
 DON'T:
-
-	Beam.beamThickness 
-	chair.weightOfChair
-	
+```matlab
+Beam.beamThickness 
+chair.weightOfChair
+```
 
 ## Names to Avoid
 
@@ -139,23 +150,24 @@ DON'T:
 **Rationale:** Names like these do not properly indicate what the class, function or variable is for.
 
 In particular: 
+```matlab
+myClass 
+my_Class 
+TheClass 
+myFunction 
+myFunc 
+my_function 
+TheFunc 
+myVar 
+my_var 
+theVar 
+myProp 
+my_prop 
+temp 
+tmp 
+test 
+```
 
-	myClass 
-	my_Class 
-	TheClass 
-	myFunction 
-	myFunc 
-	my_function 
-	TheFunc 
-	myVar 
-	my_var 
-	theVar 
-	myProp 
-	my_prop 
-	temp 
-	tmp 
-	test 
-	
 ## Function Names Document Their Use
 
 **Description:** The names of functions **MUST** document their use.
@@ -163,15 +175,17 @@ In particular:
 **Rationale:** By choosing a clear and descriptive name, the code becomes more readable.
 
 DO:
-
-	model_rMatGet 
-	control_bpmGet 
-	util_gaussFit 
-	gui_sliderControl  
+```matlab
+model_rMatGet 
+control_bpmGet 
+util_gaussFit 
+gui_sliderControl  
+```
 
 DON'T:
-
-	modelFunction 
+```matlab
+modelFunction 
+```
 
 ## Function Name Construction
 
@@ -180,22 +194,23 @@ DON'T:
 **Rationale:** This way it is more likely to be clear what the function does and if there is no suitable name following this guideline, (for example because the function does more than one thing) the function may have to be refactored.
 
 DO:
-
-	getPosition
-	findOutlier
-	multiplyNumbers
-	updateModel
-	getTwiss
-	standardizeMagnet
-	checkConvergence
+```matlab
+getPosition
+findOutlier
+multiplyNumbers
+updateModel
+getTwiss
+standardizeMagnet
+checkConvergence
+```
 
 DON'T:
-
-	rMat 
-	gauss 
-	bpms 
-	sliderstuff 
-
+```matlab
+rMat 
+gauss 
+bpms 
+sliderstuff 
+```
 
 ## Casing (General)
 
@@ -236,23 +251,25 @@ DON'T:
 **Rationale:** Maintain readability by not abbreviating words in your variable names. Common acronyms are allowed.
 
 DO:
-
-	arrivalTime 
-	bpmCharge 
+```matlab
+arrivalTime 
+bpmCharge 
+```
  
 COMMON EXCEPTIONS: 
-
-	bpm 
-	toro 
-	xcor 
-	ycor 
-	bdes 
+```matlab
+bpm 
+toro 
+xcor 
+ycor 
+bdes 
+```
 	
 DON'T:
-
-	arrTim 
-	bpmC
-	
+```matlab
+arrTim 
+bpmC
+```	
 	
 ## The 'Test' Suffix
 
@@ -277,30 +294,32 @@ This section describes recommendations for code layout and comments.
 **Rationale:** Comments that simply restate the code in plain English do not help explain what the code is doing. 
 
 DO:
-
-	BPM_x = 12; % horizontal position 
+```matlab
+BPM_x = 12; % horizontal position 
  
-	% find where the horizontal difference orbit is within defined range by iterating through  
-	% the difference orbit array by BPM, and comparing the to the acceptance difference of 0.1  
-	% in order to see where the orbit deviates horizontally. 
-	in_range = false(nBPMS, 1); 
-	for iBPM = 1:nBPMS 
-		if diff_orbit_x(iBPM) < 0.1 
-			is_in_range(iBPM) = True; 
-		end 
-	end 
+% find where the horizontal difference orbit is within defined range by iterating through  
+% the difference orbit array by BPM, and comparing the to the acceptance difference of 0.1  
+% in order to see where the orbit deviates horizontally. 
+in_range = false(nBPMS, 1); 
+for iBPM = 1:nBPMS 
+    if diff_orbit_x(iBPM) < 0.1 
+	is_in_range(iBPM) = True; 
+    end 
+end 
+```
 
 DON'T:
-
-	BPM_x = 12; % x BPM coordinate 
+```matlab
+BPM_x = 12; % x BPM coordinate 
 	 
-	% find x BPMs in range 
-	in_range = false(nBPMS, 1); 
-	for iBPM = 1:nBPMS 
-		if diff_orbit_x(iBPM) < 0.1 
-			Is_in_range(iBPM) = True; 
-		end 
-	end 
+% find x BPMs in range 
+in_range = false(nBPMS, 1); 
+for iBPM = 1:nBPMS 
+    if diff_orbit_x(iBPM) < 0.1 
+	Is_in_range(iBPM) = True; 
+    end 
+end 
+```
 
 ## Comment Frequency
 
@@ -321,15 +340,17 @@ DON'T:
 **Rationale:** Consistent comment syntax improves readability.
 
 DO:
-
-	% This is a comment. 
-	% This is also a comment. 
+```matlab
+% This is a comment. 
+% This is also a comment. 
+```
 
 DON'T:
-
-	%{ This is a comment. 
-	This is also a comment. 
-	%}
+```matlab
+%{ This is a comment. 
+This is also a comment. 
+%}
+```
 
 ## Function Indentation
 
@@ -338,16 +359,18 @@ DON'T:
 **Rationale:** Consistent indentation improves readability.
 
 DO: 
-
-	function computeWeight(in) 
-   		weight = 2 * in; 
-	end 
+```matlab
+function computeWeight(in) 
+    weight = 2 * in; 
+end 
+```
 
 DON'T:
-
-	function computeWeight(in) 
-	weight = 2 * in; 
-	end 
+```matlab
+function computeWeight(in) 
+weight = 2 * in; 
+end 
+```
 
  ## Whitespace in Statements
 
@@ -356,12 +379,14 @@ DON'T:
 **Rationale:** Whitespace around operators often leads to improved readability. As an exception, do not use spaces around the equals signs when using the Name=Value syntax introduced in MATLAB R2021a. 
 
 DO:
-
-	isValid = (y > 0) && (x == -1); 
+```matlab
+isValid = (y > 0) && (x == -1); 
+```
  
 DON'T:
-
-	isValid=(y>0)&&(x==-1);
+```matlab
+isValid=(y>0)&&(x==-1);
+```
 
 ## Whitespace in Characters
 
@@ -370,17 +395,19 @@ DON'T:
 **Rationale:** A clear separation of keywords from other code improves readability. 
 
 DO:
-
-	while ismember(x, [3, 5, 7, 11, 13]) 
-    		x = x + 2; 
-	end
+```matlab
+while ismember(x, [3, 5, 7, 11, 13]) 
+    x = x + 2; 
+end
+```
  
 DON'T
+```matlab
+while(ismember(x, [3,5,7,11,13])) 
+    x = x + 2; 
+end
+ ```
 
-	while(ismember(x, [3,5,7,11,13])) 
-	    x = x + 2; 
-	end
- 
 ## Line Length
 
 **Description:** Lines **SHOULD** be no more than 120 characters long, including comments. When possible, keep lines shorter than 80 chracters long. 
@@ -388,13 +415,15 @@ DON'T
 **Rationale:** A line of code should fit on a screen. Long lines of code are difficult to interpret and generally indicate great complexity.
 
 DO:
-
-	theText = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. ', ... 
-	            'Ut luctus arcu ex, at viverra nibh malesuada ac. Proin vel arcu leo.']; 
+```matlab
+theText = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. ', ... 
+	   'Ut luctus arcu ex, at viverra nibh malesuada ac. Proin vel arcu leo.']; 
+```
 
 DON'T
-
-	theText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut luctus arcu ex, at viverra nibh malesuada ac. Proin vel arcu leo.';
+```matlab
+theText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut luctus arcu ex, at viverra nibh malesuada ac. Proin vel arcu leo.';
+```
 
 ## Indentation Length
 
@@ -403,20 +432,22 @@ DON'T
 **Rationale:** Using an adequate and consistent number of spaces for indentation improves readability and prevents unnecessary changes when others work on the code. 
 
 DO:
-
-	if x > 0 
-	    if x < 2 
-	        disp(x) 
-	    end 
-	end 
+```matlab
+if x > 0 
+    if x < 2 
+        disp(x) 
+    end 
+end 
+```
 
 DON'T
-
-	if x > 0 
-	 if x < 2 
-	   disp(x) 
-	 end 
-	end
+```matlab
+if x > 0 
+ if x < 2 
+   disp(x) 
+ end 
+end
+```
 
 ## Comments on Poorly Written Code
 
@@ -425,18 +456,20 @@ DON'T
 **Rationale:** Readability will be improved if issues with the code are fixed immediately instead of documented in the comments. 
 
 DO:
-
-	x = 2; 
-	y = 3 * x + z;  
+```matlab
+x = 2; 
+y = 3 * x + z;  
 	 
-	z = [1, 23, 8.1] * (x ^ 3.1415) * sqrt(y); 
+z = [1, 23, 8.1] * (x ^ 3.1415) * sqrt(y); 
+```
 
 DON'T
-
-	x = 2; 
+```matlab
+x = 2; 
 	 
-	% FIXME: This piece of ugly code is copied from StackExchange. 
-	z=[1,23,8.1]*(x^3.1415)*sqrt(y);
+% FIXME: This piece of ugly code is copied from StackExchange. 
+z=[1,23,8.1]*(x^3.1415)*sqrt(y);
+```
 
 ## Commas in Rows
 
@@ -445,14 +478,16 @@ DON'T
 **Rationale:** This improves readability, especially in arrays of strings or character vectors. 
 
 DO: 
-
-	fig.Position    = [0, 1000, 1.5, 130]; 
-	saying          = ['An apple a ', period, ' keeps the doctor away.']; 
+```matlab
+fig.Position    = [0, 1000, 1.5, 130]; 
+saying          = ['An apple a ', period, ' keeps the doctor away.']; 
+```
  
 DON'T: 
-
-	fig.Position    = [0 1000 1.5 130]; 
-	saying          = ['An apple a ' period ' keeps the doctor away.']; 
+```matlab
+fig.Position    = [0 1000 1.5 130]; 
+saying          = ['An apple a ' period ' keeps the doctor away.']; 
+```
 
 ## Line Continuation with Operators
 
@@ -461,16 +496,18 @@ DON'T:
 **Rationale:** By placing binary operators at the start of the line, it is immediately clear what the line does. 
 
 DO: 
-
-	isDone = isImplemented ... 
-	    && isTested ... 
-	    && isDocumented; 
+```matlab
+isDone = isImplemented ... 
+    && isTested ... 
+    && isDocumented; 
+```
      
 DON'T: 
-
-	isDone = isImplemented && ... 
-	    isTested && ... 
-	    isDocumented; 
+```matlab
+isDone = isImplemented && ... 
+    isTested && ... 
+    isDocumented; 
+```
 
 ## Methods/Properties Blocks with Duplicate Attributes
 
@@ -479,25 +516,27 @@ DON'T:
 **Rationale:** Having multiple blocks with the same attributes is unnecessary and decreases the readability of classdef files. 
 
 DON'T
-
-	classdef Rocket 
-	    properties (Access = public, Hidden = false, Constant) 
-	        Fuel = "Nuclear" 
-	    end 
+```matlab
+classdef Rocket 
+    properties (Access = public, Hidden = false, Constant) 
+        Fuel = "Nuclear" 
+    end 
 	     
-	    properties (Constant = true) 
-	        Capacity = 2 
-	    end 
-	end
+    properties (Constant = true) 
+        Capacity = 2 
+    end 
+end
+```
 
 DO
-
-	classdef Rocket 
-	    properties (Constant) 
-	        Fuel = "Nuclear" 
-	        Capacity = 2 
-	    end 
-	end 
+```matlab
+classdef Rocket 
+    properties (Constant) 
+        Fuel = "Nuclear" 
+        Capacity = 2 
+    end 
+end 
+```
  
 ## Whitespace at the End of a Line
 
@@ -516,12 +555,13 @@ DO:
 	LINK TO HEADER EXAMPLE
 
 DON'T:
+```matlab
+function [avg, maxSize] = measureSize(obj, dim) 
+    avg = mean(obj.Size, dim); 
+    maxSize = max(obj.Size, dim); 
+end
+```
 
-	function [avg, maxSize] = measureSize(obj, dim) 
-		avg = mean(obj.Size, dim); 
-		maxSize = max(obj.Size, dim); 
-	end
- 
 ## Whitespace Around Blocks of Code
 
 **Description:** Coherent blocks of code **SHOULD** be separated by one or more blank lines. 
@@ -529,25 +569,27 @@ DON'T:
 **Rationale:** Increases the readability of the code. 
 
 DO:
-
-	% Shift to origin. 
-	deltaX = mean(xIn); 
-	xOutc = xIn - deltaX; 
+```matlab
+% Shift to origin. 
+deltaX = mean(xIn); 
+xOutc = xIn - deltaX; 
 	 
-	% Calculate scaling. 
-	scalingFactor = newZ / currentZ; 
-	xOut = xOut .* scalingFactor; 
+% Calculate scaling. 
+scalingFactor = newZ / currentZ; 
+xOut = xOut .* scalingFactor; 
 	 
-	% Shift back. 
-	xOut = xOut + deltaX; 
+% Shift back. 
+xOut = xOut + deltaX; 
+```
 
 DON'T
-
-	deltaX = mean(xIn); 
-	xOut = xIn - deltaX; 
-	scalingFactor = newZ / currentZ; 
-	xOut = xOut .* scalingFactor; 
-	xOut = xOut + deltaX;
+```matlab
+deltaX = mean(xIn); 
+xOut = xIn - deltaX; 
+scalingFactor = newZ / currentZ; 
+xOut = xOut .* scalingFactor; 
+xOut = xOut + deltaX;
+```
 
 ## Correct Spelling
 
@@ -556,17 +598,18 @@ DON'T
 **Rationale:** This increases the readability of code. Error-strewn and poorly constructed comments reflect on the code they accompany. 
 
 DO:
-
-	% Get the scaling factor. 
-	scalingFactor = newZ / currentZ; 
-	xOut = xOut * scalingFactor; % Now rescaled.  
+```matlab
+% Get the scaling factor. 
+scalingFactor = newZ / currentZ; 
+xOut = xOut * scalingFactor; % Now rescaled.  
+```
 
 DON'T:
-
-	% get sclaing factor 
-	scaling_factor = new_z / current_z; 
-	x_out = x_out * scaling_factor; % now recslaed
-
+```matlab
+% get sclaing factor 
+scaling_factor = new_z / current_z; 
+x_out = x_out * scaling_factor; % now recslaed
+```
 
 ## Align Struct Definition
 
@@ -575,15 +618,17 @@ DON'T:
 **Rationale:** This improves readability of the code by making it clearer what fields are defined and by what values. 
 
 DO:
-
-	s = struct(... 
-	    "name",     "Albert", ... 
-	    "age",      2021 - 1979, ... 
-	    "isValid",  ismember("Albert", allNames)) 
+```matlab
+s = struct(... 
+    "name",     "Albert", ... 
+    "age",      2021 - 1979, ... 
+    "isValid",  ismember("Albert", allNames)) 
+```
      
 DON'T:
-
-	s = struct("name", "Albert", "age", 2021 - 1979, "isValid", ismember("Albert", allNames)); 
+```matlab
+s = struct("name", "Albert", "age", 2021 - 1979, "isValid", ismember("Albert", allNames)); 
+```
 
 ## End Keyword
 
@@ -600,21 +645,23 @@ DON'T:
 **Rationale:** Consistent constant definition allows for easy identification.
 
 DO:
-
-	function testConstants(x) 
-		MAX_Z = 100; 
+```matlab
+function testConstants(x) 
+    MAX_Z = 100; 
 		 
-		y = 3 * x; 
-		z = min(y, MAX_Z); 
-	end 
+    y = 3 * x; 
+    z = min(y, MAX_Z); 
+end 
+```
  
 DON'T:
-
-	function testConstants(x) 
-		y = 3 * x; 
-		MAX_Z = 100; 
-		z = min(y, MAX_Z); 
-	end
+```matlab
+function testConstants(x) 
+    y = 3 * x; 
+    MAX_Z = 100; 
+    z = min(y, MAX_Z); 
+end
+```
 
 ## Variable Declarations
 
@@ -623,23 +670,25 @@ DON'T:
 **Rationale:** Declaring variables at once improves readability, and pre-allocating memory to variables improves code performance 
 
 DO:
-
-	function [var1, var2, var3] = get_vars() 
-		var1; % the first variable 
-		var2; % the second variable 
-		var3; % the third variable 
-		var1 = 10 ; 
-		var2 = var1^2; 
-		var3 = var2 * 12; 
-	end 
+```matlab
+function [var1, var2, var3] = get_vars() 
+    var1; % the first variable 
+    var2; % the second variable 
+    var3; % the third variable 
+    var1 = 10 ; 
+    var2 = var1^2; 
+    var3 = var2 * 12; 
+end 
+```
 
 DON'T:
-
-	function [var1, var2, var3] = get_vars() 
-		var1 = 10 ; 
-		var2 = var1^2; 
-		var3 = var2 * 12; 
-	end
+```matlab
+function [var1, var2, var3] = get_vars() 
+    var1 = 10 ; 
+    var2 = var1^2;
+    var3 = var2 * 12; 
+end
+```
 
 ## Magic Numbers
 
@@ -648,20 +697,22 @@ DON'T:
 **Rationale:** This encourages reuse and documentation of numerical constants and improves overall readability.
 
 DO:
-
-	DECK_SIZE   = 52; 
-	N_VALUES    = 13; 
-	 
-	for iPick = 1 : DECK_SIZE 
-	    disp(randi(N_VALUES)); 
-	end 
+```matlab
+DECK_SIZE   = 52; 
+N_VALUES    = 13; 
+ 
+for iPick = 1 : DECK_SIZE 
+    disp(randi(N_VALUES)); 
+end 
+```
 
 DON'T:
+```matlab
+for iPick = 1 : 52 
+    disp(randi(13)); 
+end 
+```
 
-	for iPick = 1 : 52 
-	    disp(randi(13)); 
-	end 
- 
 ## Function Calls Without Inputs
 
 **Description:** Empty parentheses **SHOULD** be used for function calls without input arguments. 
@@ -669,12 +720,14 @@ DON'T:
 **Rationale:** This helps to emphasize the fact that they are function calls and not variables or properties. 
 
 DO:
-
-	x = rand() * 2; 
+```matlab
+x = rand() * 2; 
+```
 
 DON'T:
-
-	x = rand * 2;
+```matlab
+x = rand * 2;
+```
 
 ## One Statement Per Line
 
@@ -685,50 +738,53 @@ DON'T:
 **Exception:** One may declare a maximum of three variables on a single line if they are all of the same type or unit. One may place an if, for or while statement on one line if there is exactly one statement inside of the loop. 
 
 DO:
-
-	for iNode = 1 : 3 
-	    x = x + iNode; 
-	    disp(x); 
-	end 
+```matlab
+for iNode = 1 : 3 
+    x = x + iNode; 
+    disp(x); 
+end 
 	 
-	a = 1;  % Unitless 
-	b = 2;  % Unitless 
-	c = 3; % Unitless 
-	disp(a + b + c); 
+a = 1;  % Unitless 
+b = 2;  % Unitless 
+c = 3; % Unitless 
+disp(a + b + c); 
 	 
-	time_limit = 2; % [minutes] 
-	time_start = 4; % [seconds] 
-	time_stop = 9; % [seconds] 
-	time_elapsed = time_stop - time_start; 
+time_limit = 2; % [minutes] 
+time_start = 4; % [seconds] 
+time_stop = 9; % [seconds] 
+time_elapsed = time_stop - time_start; 
+```
 
 DON'T:
-
-	for iNode = 1 : 3, x = x + iNode; disp(x); end 
+```matlab
+for iNode = 1 : 3, x = x + iNode; disp(x); end 
 	 
-	a = 1;  % Unitless 
-	b = 2;  % Unitless 
-	c = 3; % Unitless 
-	disp(a + b + c); 
+a = 1;  % Unitless 
+b = 2;  % Unitless 
+c = 3; % Unitless 
+disp(a + b + c); 
 	 
-	time_limit = 2; % [minutes] 
-	time_start = 4; % [seconds] 
-	time_stop = 9; % [seconds] 
-	time_elapsed = time_stop - time_start; 
+time_limit = 2; % [minutes] 
+time_start = 4; % [seconds] 
+time_stop = 9; % [seconds] 
+time_elapsed = time_stop - time_start; 
+```
 
 EXCEPTIONS:
-
-	% Variable declarations:
-	persistent x, y; 
+```matlab
+% Variable declarations:
+persistent x, y; 
 	 
-	[a, b, c] = deal(1, 2, 3); 
-	disp(a + b + c); 
+[a, b, c] = deal(1, 2, 3); 
+disp(a + b + c); 
+ 
+time_limit = 2; % [minutes] 
+[time_start, time_stop] = deal(4, 9); % [seconds] 
+time_elapsed = time_stop - time_start; 
 	 
-	time_limit = 2; % [minutes] 
-	[time_start, time_stop] = deal(4, 9); % [seconds] 
-	time_elapsed = time_stop - time_start; 
-	 
-	% One line loop: 
-	for iNode = 1 : 3, x = x + iNode; end  % 1 statement inside loop is allowed 
+% One line loop: 
+for iNode = 1 : 3, x = x + iNode; end  % 1 statement inside loop is allowed 
+```
  
 ## If/Else
 
@@ -737,18 +793,20 @@ EXCEPTIONS:
 **Rationale:** By including an else section, no execution paths are overlooked. Additionally, code coverage can be accurately reported because without else, it is unclear whether the if-condition is ever false. 
 
 DO:
-
-	if x > 0 
-	    saveData() 
-	else 
-	    % x does not indicate we want to save the dataset. 
-	end 
+```matlab
+if x > 0 
+    saveData() 
+else 
+    % x does not indicate we want to save the dataset. 
+end 
+```
 
 DON'T:
-
-	if x > 0 
-	    saveData() 
-	end
+```matlab
+if x > 0 
+    saveData() 
+end
+```
 
 ## Switch Otherwise
 
@@ -757,25 +815,27 @@ DON'T:
 **Rationale:** By including an otherwise section, no execution paths are overlooked. Additionally, code coverage can be accurately reported because without otherwise, it is unclear whether it happens that none of the cases occur. 
 
 DO:
-
-	switch reply 
-	    case "Yes" 
-	        saveData() 
-	    case "No" 
-	        clearData() 
-	    otherwise 
-	        % Should not get here. 
-	        error("Unknown reply " + reply) 
-	end 
+```matlab
+switch reply 
+    case "Yes" 
+        saveData() 
+    case "No" 
+        clearData() 
+    otherwise 
+        % Should not get here. 
+        error("Unknown reply " + reply) 
+end 
+```
 
 DON'T:
-
-	switch reply 
-	    case "Yes" 
-	        saveData() 
-	    case "No" 
-	        clearData() 
-	end
+```matlab
+switch reply 
+    case "Yes" 
+        saveData() 
+    case "No" 
+        clearData() 
+end
+```
 
 ## Mixed Types in Expressions
 
@@ -784,12 +844,14 @@ DON'T:
 **Rationale:** Mixing operand types per operator can cause unexpected results and may lead to errors in case of true incompatibilities. 
 
 DO:
-
-	d = (a * b > 0) && c; 
+```matlab
+d = (a * b > 0) && c; 
+```
  
 DON'T:
-
-	d = a * b && c;
+```matlab
+d = a * b && c;
+```
 
 ## Parentheses in Logical Expressions
 
@@ -798,12 +860,14 @@ DON'T:
 **Rationale:** By clarifying the precedence of the operands in such expressions, readability is improved and unexpected behaviour is prevented. 
 
 DO:
-
-	d = a && b || c;
+```matlab
+d = a && b || c;
+```
  
 DON'T:
-
-	d = (a && b) || c; 
+```matlab
+d = (a && b) || c; 
+```
 
 ## Parentheses in Mathematical Expressions
 
@@ -812,14 +876,16 @@ DON'T:
 **Rationale:** By clarifying the precedence of the operands in such expressions, readability is improved and unexpected behaviour is prevented. 
 
 DO:
+```matlab
+d = (a * b) + c; 
+h = (f / 2) * g; 
+```
 
-	d = (a * b) + c; 
-	h = (f / 2) * g; 
- 
 DON'T:
-
-	d = a * b + c; 
-	h = f / 2 * g;
+```matlab
+d = a * b + c; 
+h = f / 2 * g;
+```
 
 ## Assert Inputs
 
@@ -828,12 +894,14 @@ DON'T:
 **Rationale:** Including an identifier allows for better testing and exception handling. Including a proper error message directly clarifies the problem. 
 
 DO:
+```matlab
+assert(~isempty(list), 'ClassName:MethodName:ListIsEmpty', 'The list shall not be empty.') 
+```
 
-	assert(~isempty(list), 'ClassName:MethodName:ListIsEmpty', 'The list shall not be empty.') 
- 
 DON'T:
-
-	assert(~isempty(list))
+```matlab
+assert(~isempty(list))
+```
 
 ## Global Variables
 
@@ -848,13 +916,16 @@ DON'T:
 **Rationale:** These constructs may cause unreachable code or unintended behaviour. 
 
 DO:
+```matlab
+disp(x)
+```
 
-	disp(x)
 DON'T:
-
-	if x > 0 || true 
-	    disp(x) 
-	end    
+```matlab
+if x > 0 || true 
+    disp(x) 
+end    
+```
 
 ## Struct for Related Entities
 
@@ -863,16 +934,18 @@ DON'T:
 **Rationale:** Using a struct for related entities improves code organization. 
 
 DO:
-
-	Bpm.x 
-	Bpm.y 
-	Bpm.tmit 
+```matlab
+Bpm.x 
+Bpm.y 
+Bpm.tmit 
+```
 
 DON'T:
-
-	Bpm_x 
-	Bpm_y 
-	Bpm_tmit 
+```matlab
+Bpm_x 
+Bpm_y 
+Bpm_tmit 
+```
 
 ## Group Struct Field Definitions
 
@@ -881,17 +954,19 @@ DON'T:
 **Rationale:** Lines of code or functions using the struct might assume that all fields are already there, resulting in an error if the field is not there. 
 
 DO:
-
-	s = struct("f", 2, "g", 3, "h", 'new field'); 
+```matlab
+s = struct("f", 2, "g", 3, "h", 'new field'); 
 	 
-	computeCost(s); 
- 
+computeCost(s); 
+```
+
 DON'T:
-
-	s = struct("f", 2, "g", 3); 
+```matlab
+s = struct("f", 2, "g", 3); 
 	 
-	computeCost(s); 
-	s.h = 'new field'; 
+computeCost(s); 
+s.h = 'new field'; 
+```
  
 ## Eval Functions
 
@@ -907,20 +982,22 @@ Additionally, it may be overlooked when variables are defined or altered by call
 **Rationale:** Using break, continue or return decreases readability because the end of the function is not always reached. By avoiding these keywords, the flow of the code remains clear. However, these keywords can be useful to reduce complexity and improve performance. 
 
 DO:
-
-	if isempty(x) 
-	    % No further actions. 
-	else 
-	    <rest of the code> 
-	end  
+```matlab
+if isempty(x) 
+    % No further actions. 
+else 
+    <rest of the code> 
+end  
+```
 
 DON'T:
-
-	if isempty(x) 
-	    return 
-	end 
-	 
-	<rest of the code>
+```matlab
+if isempty(x) 
+    return 
+end 
+ 
+<rest of the code>
+```
 
 ## Shell Escape
 
@@ -929,12 +1006,14 @@ DON'T:
 **Rationale:** When using the !program_to_execute syntax to execute external programs, no dynamic input or program names can be used. 
 
 DO:
-
-	system('mycommand') 
+```matlab
+system('mycommand') 
+```
  
 DON'T:
-
-	!mycommand 
+```matlab
+!mycommand 
+```
 
 ## Dependencies Known
 
@@ -949,20 +1028,22 @@ DON'T:
 **Rationale:** Using try for simple error suppression can result in poor performance and unexpected behaviour. When a different error occurs than the one expected, it can go undetected because of the try/catch. 
 
 DO:
-
-	if isfield(container, 'nElements') 
-	    nElems = container.nElements; 
-	else 
-	    nElems = 0; 
-	end 
+```matlab
+if isfield(container, 'nElements') 
+    nElems = container.nElements; 
+else 
+    nElems = 0; 
+end 
+```
  
 DON'T:
-
-	try 
-	    nElems = container.nElements; 
-	catch 
-	    nElems = 0; 
-	end
+```matlab
+try 
+    nElems = container.nElements; 
+catch 
+    nElems = 0; 
+end
+```
 
 ## Floaitng-Point Comparisons
 
@@ -971,12 +1052,15 @@ DON'T:
 **Rationale:** Rounding errors due to algorithm design or machine precision can cause unexpected inequalities. 
 
 DO:
+```matlab
+out = abs(myFcn(in) - sqrt(3)) < 1e-12; 
+```
 
-	out = abs(myFcn(in) - sqrt(3)) < 1e-12; 
 DON'T:
+```matlab
+out = myFcn(in) == sqrt(3);
+```
 
-	out = myFcn(in) == sqrt(3);
- 
 ## Workspace Variable Ans
 
 **Description:** The workspace variable ans **SHOULD NOT** be used.
@@ -996,13 +1080,15 @@ DON'T:
 **Rationale:** Logical indexing is faster and more readable. 
 
 DO:
-
-	index = (v > MIN) & (v < MAX); 
+```matlab
+index = (v > MIN) & (v < MAX); 
+```
  
 DON'T
+```matlab
+index = intersect(find(v > MIN), find(v < MAX));
+```
 
-	index = intersect(find(v > MIN), find(v < MAX));
- 
 ## Loop Vectorization
 
 **Description:** Vectorization **SHOULD** be used to apply operations to arrays where feasible.
@@ -1010,20 +1096,22 @@ DON'T
 **Rationale:** Vectorized loops are faster, more robust, more readable, and more maintainable. 
 
 DO:
+```matlab
+dataResult = dataset < limit; 
+ ```
 
-	dataResult = dataset < limit; 
- 
 DON'T:
-
-	dataResult = false(size(dataset)); 
+```matlab
+dataResult = false(size(dataset)); 
 	 
-	for iElem = 1 : numel(dataset) 
-	    if dataset(iElem) < limit(iElem) 
-	        dataResult(iElem) = true; 
-	    else 
-	        dataResult(iElem) = false; 
-	    end 
-	end
+for iElem = 1 : numel(dataset) 
+    if dataset(iElem) < limit(iElem) 
+        dataResult(iElem) = true; 
+    else 
+        dataResult(iElem) = false; 
+    end 
+end
+```
 
 ## Zero Before Decimal Point
 
@@ -1032,11 +1120,14 @@ DON'T:
 **Rationale:** Increases the readability of the code. 
 
 DO:
+```matlab
+THRESHOLD = 0.5;
+```
 
-	THRESHOLD = 0.5;
 DON'T:
-
-	THRESHOLD = .5;
+```matlab
+THRESHOLD = .5;
+```
 
 ## Accessing Other Workspaces
 
@@ -1051,29 +1142,31 @@ DON'T:
 **Rationale:** The notation of a switch block is more concise and therefore, more readable and easier to maintain. 
 
 DO:
-
-	switch name 
-	    case "Bill" 
-	        ... 
-	    case {"Judith", "Bob"} 
-	        ... 
-	    case "Steve" 
-	        ... 
-	    otherwise 
-	        ... 
-	end 
+```matlab
+switch name 
+    case "Bill" 
+        ... 
+    case {"Judith", "Bob"} 
+        ... 
+    case "Steve" 
+        ... 
+    otherwise 
+        ... 
+end 
+```
 
 DON'T:
-
-	if name == "Bill" 
-	    ... 
-	elseif ismember(name, ["Judith", "Bob"]) 
-	    ... 
-	elseif name == "Steve" 
-	    ... 
-	else 
-	    ... 
-	end
+```matlab
+if name == "Bill" 
+    ... 
+elseif ismember(name, ["Judith", "Bob"]) 
+    ... 
+elseif name == "Steve" 
+    ... 
+else 
+    ... 
+end
+```
 
 # High Level Guidelines
 
@@ -1090,12 +1183,14 @@ DON'T:
 **Rationale:** This helps prevent a long calling syntax, which in turn improves the readability and reusability of the code. 
 
 DO:
-
-	out = computeWeight(blockData, nBlocks, idx); 
+```matlab
+out = computeWeight(blockData, nBlocks, idx); 
+```
  
 DON'T:
-
-	out = computeWeight(blockHeight, blockWidth, blockDepth, density, nBlocks, idx);
+```matlab
+out = computeWeight(blockHeight, blockWidth, blockDepth, density, nBlocks, idx);
+```
 
 ## Constructos with Single Output
 
@@ -1104,25 +1199,27 @@ DON'T:
 **Rationale:** A second constructor output is unusual, so will be unexpected for readers of the code. 
 
 DO:
-
-	classdef Computer 
-	    methods 
-	        function obj = Computer(in) 
-	            obj.value = in; 
-	        end 
-	    end 
-	end 
+```matlab
+classdef Computer 
+    methods 
+        function obj = Computer(in) 
+            obj.value = in; 
+        end 
+    end 
+end 
+```
 
 DON'T:
-
-	classdef Computer 
-	    methods 
-	        function [obj, out2] = Computer(in) 
-	            obj.value = in; 
-	            out2 = 2 * in; 
-	        end 
-	    end 
-	end
+```matlab
+classdef Computer 
+    methods 
+        function [obj, out2] = Computer(in) 
+            obj.value = in; 
+            out2 = 2 * in; 
+        end 
+    end 
+end
+```
 
 ## Scripts
 
@@ -1137,12 +1234,14 @@ DON'T:
 **Rationale:** The messages usually indicate that improvements can be made to the performance or stability of the code. Adding file-wide Code Analyzer suppressions is discouraged because new triggers of the messages may be overlooked. 
 
 DO:
-
-	%#ok<ABCDE> Suppress the Code Analyzer warning on this line alone. 
+```matlab
+%#ok<ABCDE> Suppress the Code Analyzer warning on this line alone. 
+```
  
 DON'T:
-
-	%#ok<*ABCDE> Suppress a Code Analyzer warning in the entire file.
+```matlab
+%#ok<*ABCDE> Suppress a Code Analyzer warning in the entire file.
+```
 
 ## Getters and Setters
 
@@ -1169,22 +1268,24 @@ DON'T:
 **Rationale:** Adding or removing fields from an existing structure outside of the function in which it was created reduces the robustness of the code. Related to coder compatibility, in generated code, adding a new field to a structure that has already been read or indexed will cause an error. 
 
 DO:
-
-	function [out] = calculateSpeed(car) 
+```matlab
+function [out] = calculateSpeed(car) 
 	 
-	out = car; 
+out = car; 
 	 
-	% clear the field 
-	car.speed = []; 
+% clear the field 
+car.speed = []; 
+```
 
 DON'T:
-
-	function [out] = calculateSpeed(car) 
+```matlab
+function [out] = calculateSpeed(car) 
 	 
-	out = car; 
+out = car; 
 	 
-	% do not remove fields from existing struct 
-	car = rmfield(car, 'speed');
+% do not remove fields from existing struct 
+car = rmfield(car, 'speed');
+```
 
 ## Single Responsibility
 
@@ -1205,25 +1306,26 @@ DON'T:
 **Rationale:** Prevents renaming all iterators when only the one for a specific loop must be renamed. Also improves readability. 
 
 DO:
-
-	for iNode = 1 : numel(nodes) 
-	    ... 
-	end 
+```matlab
+for iNode = 1 : numel(nodes) 
+    ... 
+end 
 	 
-	for iValue = 1 : 2 : 11 
-	    ... 
-	end 
+for iValue = 1 : 2 : 11 
+    ... 
+end 
+```
 
 DON'T:
-
-	for iNode = 1 : numel(nodes) 
-	    ... 
-	end 
+```matlab
+for iNode = 1 : numel(nodes) 
+    ... 
+end 
 	 
-	for iNode = 1 : 2 : 11 
-	    ... 
-	end
-
+for iNode = 1 : 2 : 11 
+    ... 
+end
+```
 
 ## Rewriting Existing Functions
 
@@ -1238,12 +1340,14 @@ DON'T:
 **Rationale:** Using matrices with implicit row or column meanings reduces the readability and robustness of the code. 
 
 DO:
-
-	distance = sqrt(x .^ 2 + y .^ 2); 
+```matlab
+distance = sqrt(x .^ 2 + y .^ 2); 
+```
  
 DON'T:
-
-	distance = sqrt(coordinates(:, 1) .^ 2 + coordinates(:, 2) .^ 2); 
+```matlab
+distance = sqrt(coordinates(:, 1) .^ 2 + coordinates(:, 2) .^ 2); 
+```
 
 ## Nested Functions
 
@@ -1258,31 +1362,33 @@ DON'T:
 **Rationale:** Assuming a dependency between independent input parameters reduces the robustness of the code. Conversely, if the inputs to a function are dependent, treating them as independent also reduces robustness. 
 
 DO:
-
-	function [meanV, meanA] = getMeanVandA(distances, timePts) 
-		meanV      = sum(distances) ./ sum(timePts); 
-		velocities = distances ./ timePts; 
-		meanA      = velocities(end) ./ sum(timePts); 
-		end 
+```matlab
+function [meanV, meanA] = getMeanVandA(distances, timePts) 
+    meanV      = sum(distances) ./ sum(timePts); 
+    velocities = distances ./ timePts; 
+    meanA      = velocities(end) ./ sum(timePts); 
+end 
 	 
-	function vectorOut = processVector(vectorIn) 
-		for iIdx = 1 : length(vectorIn) 
-		    vectorOut(ii) = processScalar(vectorIn(ii)); 
-		end 
-	end 
+function vectorOut = processVector(vectorIn) 
+    for iIdx = 1 : length(vectorIn) 
+        vectorOut(ii) = processScalar(vectorIn(ii));
+    end 
+end 
+```
 
 DON'T:
-
-	function [meanV, meanA] = getMeanVandA(velocities, distances, timePts) 
-		meanV = sum(distances) ./ sum(timePts); 
-		meanA = velocities(end) ./ sum(timePts); 
-	end 
+```matlab
+function [meanV, meanA] = getMeanVandA(velocities, distances, timePts) 
+    meanV = sum(distances) ./ sum(timePts);
+    meanA = velocities(end) ./ sum(timePts); 
+end 
 	 
-	function vectorOut = processVector(vectorIn, vectorLength) 
-		for iIdx = 1 : vectorLength 
-		    vectorOut(ii) = processScalar(vectorIn(ii)); 
-		end 
-	end
+function vectorOut = processVector(vectorIn, vectorLength) 
+    for iIdx = 1 : vectorLength 
+        vectorOut(ii) = processScalar(vectorIn(ii)); 
+    end 
+end
+```
 
 ## Java Dependency
 
@@ -1336,7 +1442,7 @@ DON'T:
 
 ## Data Save Location
 
-**Description:** Data **SHOULD** be saved using the following format: $MATLABDATAFILES/YYYY/YYYY-MM/YYYY-MM-DD, where $MATLABDATAFILES is an environment variable indicating the root directory for saving data. For example, on a production network, /u1/lcls/matlab/data/2023/2023-07/2023-07-18 for files saved on July 18th, 2023. Consider using the util_dataSave function to take care of this.
+**Description:** Data **SHOULD** be saved using the following format: ```$MATLABDATAFILES/YYYY/YYYY-MM/YYYY-MM-DD```, where ```$MATLABDATAFILES``` is an environment variable indicating the root directory for saving data. For example, on a production network, ```/u1/lcls/matlab/data/2023/2023-07/2023-07-18``` for files saved on July 18th, 2023. Consider using the util_dataSave function to take care of this.
 
 **Rationale:** This is the default data directory for SLAC AD LCLS work.
 
