@@ -18,9 +18,9 @@ This section describes recommendations for naming conventions.
 
 DO:
 ```Matlab
-	time_min = 2; 
-	time_s = 120; 
-	acceleration = 1000; % [mm/s^2] 
+time_min = 2; 
+time_s = 120; 
+acceleration = 1000; % [mm/s^2] 
 ```	
 DON'T:
 ```Matlab
