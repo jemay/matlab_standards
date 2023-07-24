@@ -23,9 +23,10 @@ DO:
 	acceleration = 1000; % [mm/s^2] 
 ```	
 DON'T:
-
+```Matlab
 	time = 2; 
 	accelerationInMillimetersPerSecondSquared = 1000;
+```
 		
 ## Negated Boolean Names
 
@@ -34,17 +35,17 @@ DON'T:
 **Rationale:** Readability decreases when variables have negated boolean names, especially in combination with the ~ operator.
 
 DO:
-
+```Matlab
 	if isValid && ~isFound 
     	error('My error message.') 
 	end 
-
+```
 DON'T:
-
+```Matlab
 	if ~notValid && isNotFound 
 		error('My error message.') 
 	end 
-	
+```
 ## Descriptive Names
 
 **Description:** Names for functions, classes, packages and variables **MUST** be precise and descriptive.
