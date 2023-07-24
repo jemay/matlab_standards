@@ -63,15 +63,15 @@
     --code-theme-background: var(--black10);
     --code-inline-background: var(--black10);
     --code-theme-comment: var(--matgreen);
-   /* --code-theme-function: var(--digitalredlight); */
+    --code-theme-function: var(--trueblack);
     --code-theme-keyword: var(--matblue);
-   /* --code-theme-operator: var(--white);
-    --code-theme-punctuation: var(--black10);
-    --code-theme-selection: var(--sky);
-    --code-theme-selector: var(--illuminating);
-    --code-theme-tag: var(--illuminating);
-    --code-theme-text: var(--fog); 
-    --code-theme-variable: var(--poppy); */
+    --code-theme-operator: var(--trueblack);
+    --code-theme-punctuation: var(--trueblack);
+    --code-theme-selection: var(--trueblack);
+    --code-theme-selector: var(--trueblack);
+    --code-theme-tag: var(--trueblack);
+    --code-theme-text: var(--matpink); 
+    --code-theme-variable: var(--trueblack);
   }
 
   footer .partner {
