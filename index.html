@@ -30,7 +30,9 @@
           target: 'h1, h2, h3, h4, h5, h6'
       },
      
-      plugins: []
+      plugins: plugins: [
+        EditOnGithubPlugin.create( "https://github.com/slaclab/matlab_standards/blob/master/", null, function(file){ return "Edit page"})
+      ]
     }
   </script>
   <script src="assets/docsify.min.js"></script>
