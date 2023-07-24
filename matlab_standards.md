@@ -1015,12 +1015,6 @@ DON'T:
 !mycommand 
 ```
 
-## Dependencies Known
-
-**Description:**
-
-**Rationale:**
-
 ## Try/For Exception Handling
 
 **Description:** The try construct **SHOULD** only be used for exception handling. An exception object must be assigned or created and an error function must be called in the catch. Do not use try/catch to suppress errors or to express simple conditions. There are other, more suitable options for that. 
