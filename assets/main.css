@@ -28,6 +28,9 @@
     --poppy: rgb(233,131,0);
     --spirited: rgb(224,79,57);
     --fog: rgb(218,215,203);
+    --matblue: rgb(14,0,255);
+    --matpink: rgb(170,4,249);
+    --matgreen: rgb(2,128,9);
 
     /* Now come the docsify theme settings */
     --base-font-family: Lato, Merriweather, sans-serif;
@@ -57,11 +60,11 @@
     --search-result-item-color: var(--white);
     --search-result-keyword-background: var(--poppy);
     --search-result-keyword-color: var(--trueblack);
-    /*--code-theme-background: var(--black10);
+    --code-theme-background: var(--black10);
     --code-inline-background: var(--black10);
-    --code-theme-comment: var(--white);
+    --code-theme-comment: var(--matgreen);
     --code-theme-function: var(--digitalredlight);
-    --code-theme-keyword: var(--lightsage);
+    --code-theme-keyword: var(--matblue);
     --code-theme-operator: var(--white);
     --code-theme-punctuation: var(--black10);
     --code-theme-selection: var(--sky);
